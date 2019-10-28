@@ -1,8 +1,22 @@
 # resumeprogram
 
 > a test project for vue
+> 采用bootstrap+vue的方式，webpack打包以及npm包管理
 
-## Build Setup
+## 需要安装的环境说明
+
+``` 
+git 
+
+nodejs
+
+npm
+
+vue
+
+```
+
+## Build Setup (环境安装之后执行)
 
 ``` bash
 # install dependencies
