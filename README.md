@@ -38,4 +38,8 @@ npm run unit
 npm test
 ```
 
+## 特别说明
+
+	尽量提交都使用命令行的方式进行提交，gitbash操作
+
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
