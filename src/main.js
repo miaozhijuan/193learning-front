@@ -6,8 +6,12 @@ import router from './router'
 import '../node_modules/jquery/dist/jquery'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
+import Rainbow from 'rainbow-nash'
+import 'rainbow-nash/dist/rainbow-nash.css'
 
 Vue.config.productionTip = false
+
+Vue.use(Rainbow)
 
 let vm = new Vue({
   el: '#app',
