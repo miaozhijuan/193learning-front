@@ -7,7 +7,7 @@
         </div>
         <div id="log">
         <r-icon type="paper-airplane"></r-icon>
-        <r-dropdown label="viavia" style="margin-left: 4px">
+        <r-dropdown label="李仕凯" style="margin-left: 4px">
           <r-dropdown-item>个人信息</r-dropdown-item>
           <r-dropdown-item>登出</r-dropdown-item>
         </r-dropdown>
