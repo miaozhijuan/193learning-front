@@ -17,8 +17,6 @@
     </li>
   </ul>
 </nav>
-    <img src="./assets/logo.png"/>
-
     <router-view></router-view>
   </div>
 </div>
