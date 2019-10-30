@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import LiShikai from '@/components/LiShikai'
 import SunShengze from '@/components/SunShengze'
 import YuanXingliang from '@/components/YuanXingliang'
+import Table from '../components/lishikai/Table.vue'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
         path: 'yuanxingliang',
         name: 'YuanXingliang',
         component: YuanXingliang
+      },
+      {
+        path: 'table',
+        name: 'Table',
+        component: Table
       }
       ]
     },
