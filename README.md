@@ -14,6 +14,12 @@ npm
 
 vue
 
+jquery
+
+bootstrap
+
+rainbow
+
 ```
 
 ## Build Setup (环境安装之后执行)
