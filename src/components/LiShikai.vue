@@ -15,12 +15,12 @@
       </div>
   <div slot="aside">
   <r-menu value="-1" style="width:200px" mode="vertical" slot="aside" >
-    <r-menu-item name="0">快速上手</r-menu-item>
+  <r-menu-item name="0" ><r-icon type="paper-airplane"></r-icon>操作菜单</r-menu-item>
   <r-menu-item name="1">
     <r-icon type="ios-paper"></r-icon>内容管理
   </r-menu-item>
-  <r-sub-menu name="2" mode="vertical">
-          <template slot="title">Basic</template>
+  <r-sub-menu name="2" >
+          <template slot="title"><span class="title"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;Basic</span></template>
           <r-menu-item name="2-1" href="grid.html">
             <r-icon type="ios-grid-view-outline"></r-icon>Grid 栅格
           </r-menu-item>
@@ -39,7 +39,7 @@
   </r-menu-item>
   <r-sub-menu name="3">
     <template slot="title">
-      <r-icon type="stats-bars"></r-icon>统计分析
+      <span class="title"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;统计分析</span>
     </template>
     <r-menu-group title="使用">
       <r-menu-item name="3-1" href="http://baidu.com" target="_blank">新增和启动</r-menu-item>
@@ -89,10 +89,10 @@ h1, h2 {
     margin-top: 40px;
     float: right;
 }
-.r-sub-menu-title {
-    margin-left: -90px
-}
-.r-menu-vertical .r-menu-group .r-menu-group-title {
-    margin-left: -140px;
+.title {
+     margin-left: -100px;
+    }
+.r-menu-group-title {
+    text-align: left;
 }
 </style>
