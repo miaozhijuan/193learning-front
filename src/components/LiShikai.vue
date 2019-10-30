@@ -1,6 +1,6 @@
 <template>
 <div>
-  <r-app id="app" v-cloak style=" height: 1500px">
+  <r-app id="app" v-cloak style=" height: 770px">
       <div slot="header" align-items="center" class="demo-header">
         <div id="test">
         <h1 style="color: #f4615c"> <span>C</span><i>lass.193</i></h1>
@@ -20,7 +20,7 @@
     <r-icon type="ios-paper"></r-icon>内容管理
   </r-menu-item>
   <r-sub-menu name="2" >
-          <template slot="title"><span class="title"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;Basic</span></template>
+          <template slot="title"><span id="title"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;Basic</span></template>
           <r-menu-item name="2-1" href="grid.html">
             <r-icon type="ios-grid-view-outline"></r-icon>Grid 栅格
           </r-menu-item>
@@ -39,16 +39,16 @@
   </r-menu-item>
   <r-sub-menu name="3">
     <template slot="title">
-      <span class="title"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;统计分析</span>
+      <span id="title2"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;统计分析</span>
     </template>
-    <r-menu-group title="使用">
-      <r-menu-item name="3-1" href="http://baidu.com" target="_blank">新增和启动</r-menu-item>
-      <r-menu-item name="3-2">活跃分期</r-menu-item>
-      <r-menu-item name="3-3">时段分析</r-menu-item>
+    <r-menu-group title="">
+      <r-menu-item name="3-1" href="http://baidu.com" target="_blank"><r-icon type="ios-browsers-outline"></r-icon>新增和启动</r-menu-item>
+      <r-menu-item name="3-2"><r-icon type="ios-browsers-outline"></r-icon>活跃分期</r-menu-item>
+      <r-menu-item name="3-3"><r-icon type="ios-browsers-outline"></r-icon>时段分析</r-menu-item>
     </r-menu-group>
-    <r-menu-group title="留存">
-      <r-menu-item name="3-4">用户留存</r-menu-item>
-      <r-menu-item name="3-5">流失用户</r-menu-item>
+    <r-menu-group title="">
+      <r-menu-item name="3-4"><r-icon type="ios-browsers-outline"></r-icon>用户留存</r-menu-item>
+      <r-menu-item name="3-5"><r-icon type="ios-browsers-outline"></r-icon>流失用户</r-menu-item>
     </r-menu-group>
   </r-sub-menu>
   <r-menu-item name="4" href="http://baidu.com">
@@ -56,7 +56,10 @@
   </r-menu-item>
 </r-menu>
 </div>
-<div slot="main">
+<div slot="main" style="">
+  <h1>
+  <b>{{msg}}</b>
+  </h1>
 </div>
   </r-app>
 </div>
@@ -89,8 +92,11 @@ h1, h2 {
     margin-top: 40px;
     float: right;
 }
-.title {
-     margin-left: -100px;
+#title {
+     margin-left: -103px;
+    }
+#title2 {
+     margin-left: -86px;
     }
 .r-menu-group-title {
     text-align: left;
