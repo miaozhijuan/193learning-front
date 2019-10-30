@@ -3,11 +3,11 @@
   <r-app id="app" v-cloak style="height: 100%">
       <div slot="header" align-items="center" class="demo-header">
         <div id="test">
-        <h1 style="color: #f4615c"> <span>C</span><i>lass.193</i></h1>
+        <h1 style="color: #f4615c"><b><span>C</span></b><i>lass.193</i></h1>
         </div>
         <div id="log">
         <r-icon type="paper-airplane"></r-icon>
-        <r-dropdown label="李仕凯" style="margin-left: 4px">
+        <r-dropdown label="李仕凯" style="margin-left: 8px">
           <r-dropdown-item>个人信息</r-dropdown-item>
           <r-dropdown-item>登出</r-dropdown-item>
         </r-dropdown>
@@ -87,7 +87,7 @@ h1, h2 {
 }
 #log {
     margin-right: 30px;
-    margin-top: 40px;
+    margin-top: 35px;
     float: right;
 }
 #title {
@@ -98,5 +98,11 @@ h1, h2 {
     }
 .r-menu-group-title {
     text-align: left;
+}
+#test {
+
+    font-family: STHupo ;}
+.demo-header span {
+    font-size: 120%;
 }
 </style>
