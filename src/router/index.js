@@ -17,8 +17,18 @@ export default new Router({
     {
       path: '/lishikai',
       name: 'LiShikai',
-      component: LiShikai
-
+      component: LiShikai,
+      children: [{
+        path: 'sunshengze',
+        name: 'SunShengze',
+        component: SunShengze
+      },
+      {
+        path: 'yuanxingliang',
+        name: 'YuanXingliang',
+        component: YuanXingliang
+      }
+      ]
     },
     {
       path: '/sunshengze',

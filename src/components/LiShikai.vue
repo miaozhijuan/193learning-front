@@ -17,14 +17,14 @@
   <r-menu value="-1" style="width:200px" mode="vertical" slot="aside" >
   <r-menu-item name="0" ><r-icon type="paper-airplane"></r-icon>操作菜单</r-menu-item>
   <r-menu-item name="1">
-    <r-icon type="ios-paper"></r-icon>内容管理
+    <r-icon type="ios-paper"></r-icon><router-link to="/lishikai/sunshengze">内容管理</router-link>
   </r-menu-item>
   <r-sub-menu name="2" >
           <template slot="title"><span id="title"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;Basic</span></template>
-          <r-menu-item name="2-1" href="grid.html">
-            <r-icon type="ios-grid-view-outline"></r-icon>Grid 栅格
+          <r-menu-item name="2-1" >
+            <r-icon type="ios-grid-view-outline"></r-icon>请期待...
           </r-menu-item>
-          <r-menu-item name="2-2" href="app.html">
+          <!-- <r-menu-item name="2-2" href="app.html">
             <r-icon type="ios-browsers-outline"></r-icon>App 布局
           </r-menu-item>
           <r-menu-item name="2-3" href="button.html">
@@ -32,34 +32,32 @@
           </r-menu-item>
           <r-menu-item name="2-4" href="icon.html">
             <r-icon type="ios-heart-outline"></r-icon>Icon 图标
-          </r-menu-item>
+          </r-menu-item> -->
         </r-sub-menu>
   <r-menu-item name="2">
-    <r-icon type="ios-people"></r-icon>用户管理
+    <r-icon type="ios-people"></r-icon><router-link to="/lishikai/yuanxingliang">用户管理</router-link>
   </r-menu-item>
   <r-sub-menu name="3">
     <template slot="title">
-      <span id="title2"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;统计分析</span>
+      <span id="title2"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;开发人员</span>
     </template>
     <r-menu-group title="">
-      <r-menu-item name="3-1" href="http://baidu.com" target="_blank"><r-icon type="ios-browsers-outline"></r-icon>新增和启动</r-menu-item>
-      <r-menu-item name="3-2"><r-icon type="ios-browsers-outline"></r-icon>活跃分期</r-menu-item>
-      <r-menu-item name="3-3"><r-icon type="ios-browsers-outline"></r-icon>时段分析</r-menu-item>
+      <r-menu-item name="3-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/sunshengze">孙圣泽</router-link></r-menu-item>
+      <r-menu-item name="3-2"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/yuanxingliang">袁星亮</router-link></r-menu-item>
+      <r-menu-item name="3-3"><r-icon type="ios-browsers-outline"></r-icon>李仕凯</r-menu-item>
     </r-menu-group>
-    <r-menu-group title="">
+    <!-- <r-menu-group title="">
       <r-menu-item name="3-4"><r-icon type="ios-browsers-outline"></r-icon>用户留存</r-menu-item>
       <r-menu-item name="3-5"><r-icon type="ios-browsers-outline"></r-icon>流失用户</r-menu-item>
-    </r-menu-group>
+    </r-menu-group> -->
   </r-sub-menu>
   <r-menu-item name="4" href="http://baidu.com">
     <r-icon type="settings"></r-icon>综合设置
   </r-menu-item>
 </r-menu>
 </div>
-<div slot="main" style="">
-  <h1>
-  <b>{{msg}}</b>
-  </h1>
+<div slot="main">
+  <router-view></router-view>
 </div>
   </r-app>
 </div>

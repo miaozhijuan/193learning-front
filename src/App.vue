@@ -1,7 +1,7 @@
 <template>
-<div class="container">
+<!-- <div class="container container-fluid"> -->
   <div id="app">
-<nav class="navbar navbar-expand-sm bg-light">
+<!-- <nav class="navbar navbar-expand-sm bg-light">
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link" href="#"><router-link to="/">HOME</router-link></a>
@@ -16,10 +16,10 @@
       <a class="nav-link" href="#"><router-link to="/yuanxingliang">袁星亮</router-link></a>
     </li>
   </ul>
-</nav>
+</nav> -->
     <router-view></router-view>
   </div>
-</div>
+<!-- </div> -->
 </template>
 
 <script>
