@@ -1,6 +1,6 @@
 <template>
 <div>
-  <r-app id="app" v-cloak>
+  <r-app id="app" v-cloak style=" height: 1500px">
       <div slot="header" align-items="center" class="demo-header">
         <div id="test">
         <h1 style="color: #f4615c"> <span>C</span><i>lass.193</i></h1>
@@ -13,12 +13,27 @@
         </r-dropdown>
         </div>
       </div>
-  </r-app>
-  <div id="left">
-  <r-menu style="width:200px" mode="vertical" v-model="activeMenu">
+  <div slot="aside">
+  <r-menu value="-1" style="width:200px" mode="vertical" slot="aside" >
+    <r-menu-item name="0">快速上手</r-menu-item>
   <r-menu-item name="1">
     <r-icon type="ios-paper"></r-icon>内容管理
   </r-menu-item>
+  <r-sub-menu name="2" mode="vertical">
+          <template slot="title">Basic</template>
+          <r-menu-item name="2-1" href="grid.html">
+            <r-icon type="ios-grid-view-outline"></r-icon>Grid 栅格
+          </r-menu-item>
+          <r-menu-item name="2-2" href="app.html">
+            <r-icon type="ios-browsers-outline"></r-icon>App 布局
+          </r-menu-item>
+          <r-menu-item name="2-3" href="button.html">
+            <r-icon type="social-youtube-outline"></r-icon>Button 按钮
+          </r-menu-item>
+          <r-menu-item name="2-4" href="icon.html">
+            <r-icon type="ios-heart-outline"></r-icon>Icon 图标
+          </r-menu-item>
+        </r-sub-menu>
   <r-menu-item name="2">
     <r-icon type="ios-people"></r-icon>用户管理
   </r-menu-item>
@@ -40,16 +55,21 @@
     <r-icon type="settings"></r-icon>综合设置
   </r-menu-item>
 </r-menu>
-  </div>
+</div>
+<div slot="main">
+</div>
+  </r-app>
 </div>
 </template>
 
 <script>
+import 'vue'
 export default {
   name: 'LiShikai',
   data () {
     return {
-      msg: 'Welcome You, Lishikai!'
+      msg: 'Welcome You, Lishikai!',
+      valuekey: '1'
     }
   }
 }
@@ -68,5 +88,11 @@ h1, h2 {
     margin-right: 30px;
     margin-top: 40px;
     float: right;
+}
+.r-sub-menu-title {
+    margin-left: -90px
+}
+.r-menu-vertical .r-menu-group .r-menu-group-title {
+    margin-left: -140px;
 }
 </style>
