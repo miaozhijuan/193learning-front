@@ -9,6 +9,7 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
 import Rainbow from 'rainbow-nash'
 import 'rainbow-nash/dist/rainbow-nash.css'
 import axios from 'axios'
+axios.defaults.headers = {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
 Vue.prototype.$axios = axios
 // axios.defaults.baseURL = '/api'
 Vue.config.productionTip = false

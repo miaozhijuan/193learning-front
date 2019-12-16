@@ -3,7 +3,7 @@
   <r-app id="app" v-cloak style="height: 100%">
       <div slot="header" align-items="center" class="demo-header">
         <div id="test">
-        <h1 style="color: #f4615c"><b><span>C</span></b><i>lass.193</i></h1>
+        <h1 style="color: #f4615c"><b><span>W</span></b><i>xxx.DBDL</i></h1>
         </div>
         <div id="log">
         <r-icon type="paper-airplane"></r-icon>
