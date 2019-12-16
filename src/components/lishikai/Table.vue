@@ -1,6 +1,6 @@
 <template>
 <div>
-  {{msg}}
+  {{pageData}}
 
 <r-tabs style="margin:10px;" v-model="tabsValue">
   <r-tab-pane name="pane1" label="welcome to 人员管理" icon="checkmark">
@@ -67,6 +67,7 @@
 
 <script>
 var data1 = []
+// eslint-disable-next-line no-unused-vars
 for (var i = 0; i < 10; i++) {
   data1.push({
     id: i,
@@ -92,12 +93,15 @@ export default {
       sortDir: 'asc',
       loading: false,
       currPage: 1,
-      total: 23400
+      total: 23400,
+      pageData: 'nihao',
+      p: ''
     }
   },
   methods: {
     _alert (id, e) {
       e.stopPropagation()
+      // this.searchUser()
       this.$alert(id)
     },
     sort (dir, field) {
@@ -122,8 +126,25 @@ export default {
       }, 1000)
     },
     rowClick (data, e) {
+      this.searchUser()
       this.$message('点击了' + data.id)
+    },
+    searchUser () {
+      this.$axios.get('http://127.0.0.1:9200/lishikai_index007/_search', { 'query': { 'match': { '发现人': '朱贵' } } }).then(res => {
+        console.log(1233)
+        console.log(res.data)
+      })
     }
+  },
+  created: function () {
+    this.p = '{"query":{"match":{"发现人":"朱贵"}}}' // 只要构建好json字符串就行了，不用管其他的，发送到哪里是elasticsearch解析,那么容易解析。
+    this.$axios.get('http://127.0.0.1:9200/lishikai_index007/_search', this.p).then(res => {
+      console.log(typeof res.data)
+      console.log(res.data.hits.hits[0])
+      // this.pageData = res.data.hits.hits[0]._source.专业分类 // 中文也可以服了
+      this.pageData = res.data.hits.hits[0]._source
+      // console.log(this.pageData)
+    })
   }
 }
 /* eslint-disable */

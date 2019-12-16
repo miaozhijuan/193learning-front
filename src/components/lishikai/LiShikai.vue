@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import 'vue'
+// import 'vue'
 export default {
   name: 'LiShikai',
   data () {
