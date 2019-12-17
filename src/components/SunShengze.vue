@@ -12,7 +12,7 @@ export default {
   name: 'SunShengze',
   data () {
     return {
-      msg: 'Welcome You, SunShengze!'
+      msg: 'Welcome You, lishikai!'
     }
   }
 }

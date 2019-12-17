@@ -1,14 +1,13 @@
 <template>
 <div>
-  {{pageData}}
-
+{{typeof pageData}}
 <r-tabs style="margin:10px;" v-model="tabsValue">
-  <r-tab-pane name="pane1" label="welcome to 人员管理" icon="checkmark">
+  <r-tab-pane name="pane1" label="welcome to 智能检索" icon="checkmark">
     <!-- 搜索框 -->
     <r-form label-width="100" :model="formItem" :rules="ruleValidate" ref="myForm" inline="false">
       <div class="margin-top-10">
-        <r-input v-model.trim="newAddText"></r-input>
-        <r-button @click.native="addNewList">搜索</r-button>
+        <r-input v-model.trim="newAddText" @keyup.enter.native="keyupEnter"></r-input>
+        <r-button @click.native="addNewTag">搜索</r-button>
         <r-tag v-for='(list,index) in lists' v-bind:key='list.id' closeable type="primary"   @close="tagClose(index)">
           {{list.title}}
         </r-tag>
@@ -43,12 +42,12 @@
 >
   <r-table-column width="50" type="expand" align="center">
     <template slot-scope="scope">
-      <div>{{scope.data.name}}</div>
+      <div>{{scope.data.content}}</div>
     </template>
   </r-table-column>
-  <r-table-column width="50" type="checkbox"></r-table-column>
-  <r-table-column width="50" type="index"></r-table-column>
-  <r-table-column title="姓名" field="name" width="80" :ellipsis="true">
+<!--  <r-table-column width="50" type="checkbox"></r-table-column>-->
+<!--  <r-table-column width="50" type="index"></r-table-column>-->
+  <r-table-column title="推荐值" field="name" align="center" width="80" :ellipsis="true">
     <template slot-scope="scope">
       <r-tooltip>
         <span>{{scope.data.name}}</span>
@@ -56,8 +55,8 @@
       </r-tooltip>
     </template>
   </r-table-column>
-  <r-table-column title="类别推荐" field="math" align="right" :sortable="true" v-if="test"></r-table-column>
-  <r-table-column title="规章推荐" field="chinese.value" align="right" :sortable="true"></r-table-column>
+  <r-table-column title="类别推荐" field="math" align="center"  v-if="test"></r-table-column>
+  <r-table-column title="规章推荐" field="chinese.value" width="500" align="left" ></r-table-column>
   <r-table-column title="查看详情" align="center" width="140" v-if="test">
     <template slot-scope="scope">
       <r-button type="primary" size="small" @click.native="_alert(scope.data.id, $event)" v-if="test">查看</r-button>
@@ -67,7 +66,7 @@
     </div>
 <!-- 页码 -->
 <div class="margin-top-10">
-  <r-page v-model="currPage" :total="total" :show-total="true" size="small" :page-size="1000"></r-page>
+  <r-page v-model="currPage" :total="total" :show-total="true" size="small" :page-size="10"></r-page>
 </div>
   </r-tab-pane>
 </r-tabs>
@@ -75,41 +74,25 @@
 </template>
 
 <script>
-var data1 = []
-// eslint-disable-next-line no-unused-vars
-for (var i = 0; i < 10; i++) {
-  data1.push({
-    id: i,
-    name: '张三测试测试测试测试' + i,
-    math: i * 10,
-    chinese: {
-      value: i * 10 + 5
-    }
-  })
-}
-
 export default {
   name: 'table',
   data () {
     return {
       newAddText: '',
       lists: [
-        {id: 1, title: '古马66千伏'},
-        {id: 2, title: '不符合'},
-        {id: 3, title: '巡视时发现'}
       ],
-      nextTodoId: 3,
+      nextTodoId: 0,
       msg: '表格组件welcome',
       tabsValue: '',
       input: '',
       value: '1',
-      data1: data1,
+      data1: '',
       test: true,
       sortField: 'math',
       sortDir: 'asc',
       loading: false,
       currPage: 1,
-      total: 23400,
+      total: 0,
       pageData: 'nihao',
       p: '',
       common: {
@@ -126,6 +109,28 @@ export default {
     }
   },
   methods: {
+    initDataVue () {
+      this.total = this.pageData.total.value
+      for (var i = 0; i < this.pageData.total.value; i++) {
+        let value = this.pageData.hits[i]._source.事故隐患内容
+        let valueContent = this.pageData.hits[i]._source.事故隐患内容
+        let index = value.indexOf('《')
+        let stop = value.lastIndexOf('') // 字符串截取，实现规章制度推荐
+        value = value.substring(index, stop)
+        let start = valueContent.indexOf('《')
+        let contentValue = valueContent.substring(0, start)
+        console.log(this.pageData.hits[i]._score)
+        this.data1.push({
+          id: i,
+          name: this.pageData.hits[i]._score,
+          math: this.pageData.hits[i]._source.专业分类,
+          chinese: {
+            value: value
+          },
+          content: contentValue
+        })
+      }
+    },
     // lists.splice(index, 1)
     tagClose (index) {
       this.lists.splice(index, 1)
@@ -133,7 +138,10 @@ export default {
       // 进行检索和渲染
       this.searchUser()
     },
-    addNewList: function () {
+    keyupEnter () {
+      this.addNewTag()
+    },
+    addNewTag: function () {
       if (this.newAddText !== '') {
         this.lists.push({
           id: this.nextTodoId++,
@@ -178,7 +186,17 @@ export default {
       this.searchUser()
       this.$message('点击了' + data.id)
     },
-    searchUser () {
+    async funA () {
+      var res = await this.$axios.post('http://127.0.0.1:9200/lishikai_index007/_search', this.p) // 这里的res就是axios请求回来的结果
+      let demo = res.data.hits
+      console.log(demo)
+      this.pageData = demo
+    },
+    async searchUser () {
+      console.log(this.pageData + 'type of it is ' + typeof this.pageData)
+      if (this.pageData === '') {
+        return
+      }
       // 先做基于事故隐含内容的
       // list for 循环
       this.p = '{"query":{"bool":{"must":['
@@ -191,13 +209,21 @@ export default {
       }
       this.p = this.p + ']}}}'
       console.log(this.p)
-      var p1 = JSON.parse(JSON.stringify(this.p))
+      // var p1 = JSON.parse(JSON.stringify(this.p))
       // param 没有发送过去,中文乱码问题 {params: this.p, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}}
       this.$axios.defaults.headers = {'Content-Type': 'application/json'}
-      this.$axios.post('http://127.0.0.1:9200/lishikai_index007/_search', this.p).then(res => {
-        console.log(p1)
-        console.log(res.data)
-      })
+      // this.$axios.post('http://127.0.0.1:9200/lishikai_index007/_search', this.p).then(res => {
+      //   console.log(p1)
+      //   let demo = res.data.hits
+      //   console.log(demo)
+      //   this.pageData = demo
+      // })
+      var res = await this.$axios.post('http://127.0.0.1:9200/lishikai_index007/_search', this.p) // 这里的res就是axios请求回来的结果
+      let demo = res.data.hits
+      console.log(demo)
+      this.pageData = demo
+      this.data1 = []
+      this.initDataVue()
     }
   }
   // created: function () {
@@ -212,6 +238,34 @@ export default {
   // }
 }
 /* eslint-disable */
+// var data1 = []
+// for (var i = 0; i < 10; i++) {
+//   data1.push({
+//     id: i,
+//     name: '张三测试测试测试测试' + i,
+//     math: i * 10,
+//     chinese: {
+//       value: i * 10 + 5
+//     }
+//   })
+// }
+function initData(){
+// eslint-disable-next-line no-unused-vars
+  if(typeof this.pageData == 'object'){ {
+    console.log(this.pageData.total.value)
+    for (var i = 0; i < this.pageData.total.value; i++) {
+      data1.push({
+        id: i,
+        name: '张三测试测试测试测试' + i,
+        math: i * 10,
+        chinese: {
+          value: i * 10 + 5
+        }
+      })
+    }
+  }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

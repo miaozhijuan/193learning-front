@@ -22,7 +22,7 @@
   <r-sub-menu name="2" >
           <template slot="title"><span id="title"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;Basic</span></template>
           <r-menu-item name="2-1" >
-            <r-icon type="ios-grid-view-outline"></r-icon><router-link to="/lishikai/table">人员管理</router-link>
+            <r-icon type="ios-grid-view-outline"></r-icon><router-link to="/lishikai/table">智能检索</router-link>
           </r-menu-item>
           <r-menu-item name="2-2" >
             <r-icon type="ios-grid-view-outline"></r-icon>请期待...
