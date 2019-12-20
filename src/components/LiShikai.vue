@@ -14,24 +14,25 @@
         </div>
       </div>
   <div slot="aside">
-  <r-menu value="-1" style="width:200px" mode="vertical" slot="aside" expand>
-  <r-menu-item name="0" ><r-icon type="paper-airplane"></r-icon>操作菜单</r-menu-item>
-  <r-menu-item name="1">
+<!--    value="3-1"-->
+  <r-menu  style="width:200px" mode="vertical" v-model="activeMenu"   slot="aside" expend>
+  <r-menu-item><r-icon type="paper-airplane"></r-icon>操作菜单</r-menu-item>
+  <r-menu-item name="2">
     <r-icon type="ios-paper"></r-icon><router-link to="/lishikai/sunshengze">内容管理</router-link>
   </r-menu-item>
-  <r-sub-menu name="2" >
-          <template slot="title"><span id="title"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;Basic</span></template>
-          <r-menu-item name="2-1" >
-            <r-icon type="ios-grid-view-outline"></r-icon><router-link to="/lishikai/table">智能检索</router-link>
+  <r-sub-menu name="3">
+          <template slot="title"><span id="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="network"></r-icon>&nbsp;&nbsp;&nbsp;知识图谱</span></template>
+          <r-menu-item name="3-1" >
+            <r-icon type="search"></r-icon><router-link to="/lishikai/table">智能检索</router-link>
           </r-menu-item>
-          <r-menu-item name="2-2" >
-            <r-icon type="ios-grid-view-outline"></r-icon>请期待...
+          <r-menu-item name="3-2" >
+            <r-icon type="ios-grid-view-outline"></r-icon>敬请期待...
           </r-menu-item>
-          <r-menu-item name="2-3" >
-            <r-icon type="ios-grid-view-outline"></r-icon>请期待...
+          <r-menu-item name="3-3" >
+            <r-icon type="ios-grid-view-outline"></r-icon>敬请期待...
           </r-menu-item>
-          <r-menu-item name="2-4" >
-            <r-icon type="ios-grid-view-outline"></r-icon>请期待...
+          <r-menu-item name="3-4" >
+            <r-icon type="ios-grid-view-outline"></r-icon>敬请期待...
           </r-menu-item>
           <!-- <r-menu-item name="2-2" href="app.html">
             <r-icon type="ios-browsers-outline"></r-icon>App 布局
@@ -43,24 +44,24 @@
             <r-icon type="ios-heart-outline"></r-icon>Icon 图标
           </r-menu-item> -->
         </r-sub-menu>
-  <r-menu-item name="2">
+  <r-menu-item name="4">
     <r-icon type="ios-people"></r-icon><router-link to="/lishikai/yuanxingliang">用户管理</router-link>
   </r-menu-item>
-  <r-sub-menu name="3">
+  <r-sub-menu name="5">
     <template slot="title">
       <span id="title2"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;开发人员</span>
     </template>
     <r-menu-group title="">
-      <r-menu-item name="3-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/sunshengze">孙圣泽</router-link></r-menu-item>
-      <r-menu-item name="3-2"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/yuanxingliang">袁星亮</router-link></r-menu-item>
-      <r-menu-item name="3-3"><r-icon type="ios-browsers-outline"></r-icon>李仕凯</r-menu-item>
+      <!-- <r-menu-item name="3-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/sunshengze">孙圣泽</router-link></r-menu-item>
+      <r-menu-item name="3-2"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/yuanxingliang">袁星亮</router-link></r-menu-item> -->
+      <r-menu-item name="5-1"><r-icon type="ios-browsers-outline"></r-icon>李仕凯</r-menu-item>
     </r-menu-group>
     <!-- <r-menu-group title="">
       <r-menu-item name="3-4"><r-icon type="ios-browsers-outline"></r-icon>用户留存</r-menu-item>
       <r-menu-item name="3-5"><r-icon type="ios-browsers-outline"></r-icon>流失用户</r-menu-item>
     </r-menu-group> -->
   </r-sub-menu>
-  <r-menu-item name="4" href="http://baidu.com">
+  <r-menu-item name="5">
     <r-icon type="settings"></r-icon>综合设置
   </r-menu-item>
 </r-menu>
@@ -78,6 +79,13 @@ export default {
   name: 'LiShikai',
   data () {
     return {
+      common: {
+        componentValue: '',
+        activeMenu: '5-1',
+        tab: '',
+        tab2: ''
+      },
+      activeMenu: '',
       msg: 'Welcome You, Lishikai!',
       valuekey: '1'
     }

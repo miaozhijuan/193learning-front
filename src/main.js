@@ -3,9 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import '../node_modules/jquery/dist/jquery'
+// eslint-disable-next-line no-unused-vars
+import $ from '../node_modules/jquery/dist/jquery'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
+import '../node_modules/bootstrap/dist/js/bootstrap.min'
 import Rainbow from 'rainbow-nash'
 import 'rainbow-nash/dist/rainbow-nash.css'
 import axios from 'axios'
