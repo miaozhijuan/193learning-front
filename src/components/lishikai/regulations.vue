@@ -8,7 +8,7 @@
 <!--    </el-breadcrumb>-->
 <!--  </div>-->
 <r-tabs style="margin:10px;" v-model="tabsValue">
-  <r-tab-pane name="pane1" label="暂控措施" icon="search">
+  <r-tab-pane name="pane1" label="规章规则推荐" icon="search">
     <!-- 搜索框 -->
     <r-form label-width="100" :model="formItem" :rules="ruleValidate" ref="myForm" inline="false">
       <div class="margin-top-10">
@@ -84,8 +84,8 @@
 <!--      <div>{{scope.data.content}}</div>-->
 <!--    </template>-->
 <!--  </r-table-column>-->
-      <r-table-column width="10" type="checkbox" align="center" ></r-table-column>
-      <r-table-column width="15" type="index"></r-table-column>
+      <r-table-column width="40" type="checkbox" align="center" ></r-table-column>
+      <r-table-column width="40" type="index"></r-table-column>
   <r-table-column title="推荐指数" field="name" align="center" width="130" :ellipsis="true">
 <!--    <template slot-scope="scope">-->
 <!--      <r-tooltip placement="left-end">-->
@@ -94,15 +94,15 @@
 <!--      </r-tooltip>-->
 <!--    </template>-->
   </r-table-column>
-  <r-table-column title="类别推荐" field="math" width="100" align="center"  v-if="test"></r-table-column>
-<!--    <r-table-column title="规章推荐" field="chinese.value"  align="left" :ellipsis="true" >-->
-<!--    <template slot-scope="scope">-->
-<!--      <r-tooltip placement="left-start">-->
-<!--        <span>{{scope.data.chinese.value}}</span>-->
-<!--        <div slot="content">{{scope.data.chinese.value}}</div>-->
-<!--      </r-tooltip>-->
-<!--    </template>-->
-<!--  </r-table-column>-->
+<!--  <r-table-column title="类别推荐" field="math" width="100" align="center"  v-if="test"></r-table-column>-->
+      <r-table-column title="规程规则推荐" field="chinese.value" width="800"   align="left" :ellipsis="true" >
+        <!--    <template slot-scope="scope">-->
+        <!--      <r-tooltip placement="left-start">-->
+        <!--        <span>{{scope.data.chinese.value}}</span>-->
+        <!--        <div slot="content">{{scope.data.chinese.value}}</div>-->
+        <!--      </r-tooltip>-->
+        <!--    </template>-->
+      </r-table-column>
 <!--      <template slot-scope="scope">-->
 <!--        <r-tooltip>-->
 <!--          <span>{{scope.data.chinese.value}}</span>-->
@@ -419,7 +419,7 @@ export default {
       this.$message('点击了第' + data.id + '条')
     },
     async funA () {
-      var res = await this.$axios.post('http://127.0.0.1:9200/lishikai_index007/_search', this.p) // 这里的res就是axios请求回来的结果
+      var res = await this.$axios.post('http://127.0.0.1:9200/lishikai_index000/_search', this.p) // 这里的res就是axios请求回来的结果
       let demo = res.data.hits
       console.log(demo)
       this.pageData = demo
@@ -449,13 +449,13 @@ export default {
       // var p1 = JSON.parse(JSON.stringify(this.p))
       // param 没有发送过去,中文乱码问题 {params: this.p, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}}
       this.$axios.defaults.headers = {'Content-Type': 'application/json'}
-      // this.$axios.post('http://127.0.0.1:9200/lishikai_index007/_search', this.p).then(res => {
+      // this.$axios.post('http://127.0.0.1:9200/lishikai_index000/_search', this.p).then(res => {
       //   console.log(p1)
       //   let demo = res.data.hits
       //   console.log(demo)
       //   this.pageData = demo
       // })
-      var res = await this.$axios.post('http://127.0.0.1:9200/lishikai_index007/_search', this.p) // 这里的res就是axios请求回来的结果
+      var res = await this.$axios.post('http://127.0.0.1:9200/lishikai_index000/_search', this.p) // 这里的res就是axios请求回来的结果
       let demo = res.data.hits
       console.log(demo)
       this.pageData = demo
@@ -470,7 +470,7 @@ export default {
       console.log(res.data)
     })
     // this.p = '{"query":{"match":{"发现人":"朱贵"}}}' // 只要构建好json字符串就行了，不用管其他的，发送到哪里是elasticsearch解析,那么容易解析。
-    // this.$axios.get('http://127.0.0.1:9200/lishikai_index007/_search', this.p).then(res => {
+    // this.$axios.get('http://127.0.0.1:9200/lishikai_index000/_search', this.p).then(res => {
     //   console.log(typeof res.data)
     //   console.log(res.data.hits.hits[0])
     //   // this.pageData = res.data.hits.hits[0]._source.专业分类 // 中文也可以服了

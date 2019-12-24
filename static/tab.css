@@ -23,3 +23,11 @@
 .r-tag-primary {
   float: left;
 }
+.r-checkbox .r-checkbox-icon {
+  margin-top: 10px;
+  margin-left: 0px;
+
+}
+.r-table th {
+  text-align-last: center
+}
