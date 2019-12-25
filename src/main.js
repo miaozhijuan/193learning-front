@@ -24,6 +24,9 @@ import 'echarts/lib/component/title'
 import 'zrender/lib/svg/svg'
 import 'v-charts/lib/style.css'
 import Print from 'vue-print-nb'
+import store from './store/store'
+import Vuex from 'vuex'
+
 // [VeLine, VeMap].forEach(comp => {
 //    Vue.component(comp.name, comp)
 // })
@@ -38,9 +41,11 @@ Vue.config.productionTip = false
 Vue.use(Rainbow)
 Vue.use(ElementUI)
 Vue.use(Print)
+Vue.use(Vuex)
 let vm = new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

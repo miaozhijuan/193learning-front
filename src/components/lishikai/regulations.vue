@@ -360,6 +360,8 @@ export default {
     // lists.splice(index, 1)
     tagClose (index) {
       this.lists.splice(index, 1)
+      // 解决删除问题
+      this.$store.state.pageData = this.lists
       console.log(this.lists)
       // 进行检索和渲染
       this.searchUser()
@@ -435,6 +437,15 @@ export default {
         return
       }
       // 先做基于事故隐含内容的
+      // 缓存系统缓存到vuex中---------实现
+      console.log(this.lists)
+      console.log(this.$store.state.pageData)
+      if (this.lists.length > 0) {
+        this.$store.state.pageData = this.lists
+      }
+      if (this.$store.state.pageData.length > 0) {
+        this.lists = this.$store.state.pageData
+      }
       // list for 循环
       this.p = '{"query":{"bool":{"must":['
       for (var i = 0; i < this.lists.length; i++) {
@@ -463,12 +474,14 @@ export default {
       this.initDataVue()
     }
   },
-  created: function () {
-    this.$axios.post('http://127.0.0.1:8008/index/', this.p).then(res => {
-      //   console.log(p1)
-      //   let demo = res.data.hits
-      console.log(res.data)
-    })
+  mounted: function () {
+    this.lists = this.$store.state.pageData
+    this.searchUser()
+    // this.$axios.post('http://127.0.0.1:8008/index/', this.p).then(res => {
+    //   //   console.log(p1)
+    //   //   let demo = res.data.hits
+    //   console.log(res.data)
+    // })
     // this.p = '{"query":{"match":{"发现人":"朱贵"}}}' // 只要构建好json字符串就行了，不用管其他的，发送到哪里是elasticsearch解析,那么容易解析。
     // this.$axios.get('http://127.0.0.1:9200/lishikai_index000/_search', this.p).then(res => {
     //   console.log(typeof res.data)
