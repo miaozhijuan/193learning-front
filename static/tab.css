@@ -31,3 +31,33 @@
 .r-table th {
   text-align-last: center
 }
+.r-card-head {
+  display: none;
+
+}
+
+.r-card-body {
+  width: 700px;
+  position: relative;
+  left: 10px;
+  top: 10px;
+
+}
+#card {
+  position: relative;
+  top: -180px;
+  left: -180px;
+
+  width: 0px;
+  margin-left: 0px;
+}
+.r-btn-default {
+  display: block;
+
+
+
+}
+.r-upload {
+
+  width: 100px;
+}

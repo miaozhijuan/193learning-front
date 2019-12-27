@@ -94,26 +94,32 @@
             <r-icon type="ios-heart-outline"></r-icon>Icon 图标
           </r-menu-item> -->
         </r-sub-menu>
-  <r-menu-item name="4">
-    <r-icon type="ios-people"></r-icon><router-link to="/lishikai/user">用户管理</router-link>
+<!--  <r-sub-menu name="5">-->
+<!--    <template slot="title">-->
+<!--      <span id="title2"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;开发人员</span>-->
+<!--    </template>-->
+<!--    <r-menu-group title="">-->
+<!--      &lt;!&ndash; <r-menu-item name="3-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/sunshengze">孙圣泽</router-link></r-menu-item>-->
+<!--      <r-menu-item name="3-2"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/yuanxingliang">袁星亮</router-link></r-menu-item> &ndash;&gt;-->
+<!--      <r-menu-item name="5-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/yuanxingliang">李仕凯</router-link></r-menu-item>-->
+<!--    </r-menu-group>-->
+<!--    &lt;!&ndash; <r-menu-group title="">-->
+<!--      <r-menu-item name="3-4"><r-icon type="ios-browsers-outline"></r-icon>用户留存</r-menu-item>-->
+<!--      <r-menu-item name="3-5"><r-icon type="ios-browsers-outline"></r-icon>流失用户</r-menu-item>-->
+<!--    </r-menu-group> &ndash;&gt;-->
+<!--  </r-sub-menu>-->
+    <r-sub-menu name="5">
+      <template slot="title"><span id="title3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="settings"></r-icon>&nbsp;&nbsp;&nbsp;隐患事件管理</span></template>
+  <r-menu-item name="5-1">
+    <r-icon type="clipboard"></r-icon><router-link to="/lishikai/accidentManager">&nbsp;手工录入管理</router-link>
   </r-menu-item>
-  <r-sub-menu name="5">
-    <template slot="title">
-      <span id="title2"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;开发人员</span>
-    </template>
-    <r-menu-group title="">
-      <!-- <r-menu-item name="3-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/sunshengze">孙圣泽</router-link></r-menu-item>
-      <r-menu-item name="3-2"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/yuanxingliang">袁星亮</router-link></r-menu-item> -->
-      <r-menu-item name="5-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/yuanxingliang">李仕凯</router-link></r-menu-item>
-    </r-menu-group>
-    <!-- <r-menu-group title="">
-      <r-menu-item name="3-4"><r-icon type="ios-browsers-outline"></r-icon>用户留存</r-menu-item>
-      <r-menu-item name="3-5"><r-icon type="ios-browsers-outline"></r-icon>流失用户</r-menu-item>
-    </r-menu-group> -->
-  </r-sub-menu>
-  <r-menu-item name="5">
-    <r-icon type="settings"></r-icon>综合设置
-  </r-menu-item>
+      <r-menu-item name="5-2">
+      <r-icon type="ios-cloud-upload"></r-icon><router-link to="/lishikai/fileupload">文件导入管理</router-link>
+      </r-menu-item>
+    </r-sub-menu>
+    <r-menu-item name="4">
+      <r-icon type="ios-people"></r-icon><router-link to="/lishikai/user">用户管理</router-link>
+    </r-menu-item>
 </r-menu>
 </div>
 <div slot="main">
@@ -241,6 +247,9 @@ h1, h2 {
 #title2 {
      margin-left: -86px;
     }
+#title3 {
+  margin-left: -103px;
+}
 .r-menu-group-title {
     text-align: left;
 }

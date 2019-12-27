@@ -95,7 +95,7 @@
 <!--&lt;!&ndash;    </template>&ndash;&gt;-->
 <!--  </r-table-column>-->
 <!--  <r-table-column title="类别推荐" field="math" width="100" align="center"  v-if="test"></r-table-column>-->
-      <r-table-column title="规程规则推荐" field="chinese.value" width="800"   align="left" :ellipsis="true" >
+      <r-table-column title="规程规则推荐" field="chinese.value" width="930"   align="left" :ellipsis="true" >
         <!--    <template slot-scope="scope">-->
         <!--      <r-tooltip placement="left-start">-->
         <!--        <span>{{scope.data.chinese.value}}</span>-->
@@ -109,7 +109,7 @@
 <!--          <div slot="content">{{scope.data.chinese.value}}</div>-->
 <!--        </r-tooltip>-->
 <!--      </template>-->
-  <r-table-column title="查看详情" align="center" width="140" v-if="test">
+  <r-table-column title="查看详情" align="center" width="200" v-if="test">
     <template slot-scope="scope">
       <r-button type="primary" size="small" @click.native="_alert(scope.data.chinese.value , $event)" v-if="test">查看</r-button>
     </template>

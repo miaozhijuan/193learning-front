@@ -95,7 +95,7 @@
 <!--&lt;!&ndash;    </template>&ndash;&gt;-->
 <!--  </r-table-column>-->
 <!--  <r-table-column title="类别推荐" field="math" width="100" align="center"  v-if="test"></r-table-column>-->
-    <r-table-column title="暂控措施推荐" field="tmpmeasure" width="800"   align="left" :ellipsis="true" >
+    <r-table-column title="暂控措施推荐" field="tmpmeasure" width="930"   align="left" :ellipsis="true" >
 <!--    <template slot-scope="scope">-->
 <!--      <r-tooltip placement="left-start">-->
 <!--        <span>{{scope.data.chinese.value}}</span>-->
