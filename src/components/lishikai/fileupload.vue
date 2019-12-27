@@ -3,7 +3,7 @@
     <r-card>
       <r-tabs v-model="common.tab">
         <r-tab-pane name="1" label="文件导入">
-          <r-upload v-model="images" action="//jsonplaceholder.typicode.com/posts/" :on-success="onSuccess" :on-error="onError" :on-remove="onRemove" :multiple="true" :on-preview="onPreview" :before-upload="beforeUpload" :limit="5">
+          <r-upload v-model="images" action="http://127.0.0.1:8000/upload_file/" :on-success="onSuccess" :on-error="onError" :on-remove="onRemove" :multiple="true" :on-preview="onPreview" :before-upload="beforeUpload" :limit="5">
             <r-button icon="ios-cloud-upload-outline">上传文件</r-button>
           </r-upload>
           <r-button type="primary" v-if="test">处理已上传文件</r-button>

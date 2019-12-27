@@ -65,7 +65,7 @@
       </div>
   <div slot="aside">
 <!--    value="3-1"-->
-  <r-menu  style="width:200px" mode="vertical" v-model="activeMenu"   slot="aside" expend>
+  <r-menu  style="width:200px" mode="vertical" expand="true" v-model="activeMenu"   slot="aside" expend>
   <r-menu-item><r-icon type="paper-airplane"></r-icon>操作菜单</r-menu-item>
   <r-menu-item name="2">
     <r-icon type="ios-paper"></r-icon><router-link to="/lishikai/map">内容管理</router-link>
