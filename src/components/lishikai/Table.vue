@@ -84,17 +84,17 @@
 <!--      <div>{{scope.data.content}}</div>-->
 <!--    </template>-->
 <!--  </r-table-column>-->
-      <r-table-column width="10" type="checkbox" align="center" ></r-table-column>
-      <r-table-column width="15" type="index"></r-table-column>
-  <r-table-column title="推荐指数" field="name" align="center" width="130" :ellipsis="true">
-<!--    <template slot-scope="scope">-->
-<!--      <r-tooltip placement="left-end">-->
-<!--        <span>{{scope.data.name}}</span>-->
-<!--        <div slot="content">{{scope.data.chinese.value}}</div>-->
-<!--      </r-tooltip>-->
-<!--    </template>-->
-  </r-table-column>
-  <r-table-column title="类别推荐" field="math" width="100" align="center"  v-if="test"></r-table-column>
+      <r-table-column width="40" type="checkbox" align="center" ></r-table-column>
+      <r-table-column width="40" type="index"></r-table-column>
+<!--  <r-table-column title="推荐指数" field="name" align="center" width="160" :ellipsis="true">-->
+<!--&lt;!&ndash;    <template slot-scope="scope">&ndash;&gt;-->
+<!--&lt;!&ndash;      <r-tooltip placement="left-end">&ndash;&gt;-->
+<!--&lt;!&ndash;        <span>{{scope.data.name}}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div slot="content">{{scope.data.chinese.value}}</div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </r-tooltip>&ndash;&gt;-->
+<!--&lt;!&ndash;    </template>&ndash;&gt;-->
+<!--  </r-table-column>-->
+  <r-table-column title="类别推荐" field="math" width="800" align="center"  v-if="test"></r-table-column>
 <!--    <r-table-column title="规章推荐" field="chinese.value"  align="left" :ellipsis="true" >-->
 <!--    <template slot-scope="scope">-->
 <!--      <r-tooltip placement="left-start">-->
@@ -109,11 +109,11 @@
 <!--          <div slot="content">{{scope.data.chinese.value}}</div>-->
 <!--        </r-tooltip>-->
 <!--      </template>-->
-  <r-table-column title="查看详情" align="center" width="140" v-if="test">
-    <template slot-scope="scope">
-      <r-button type="primary" size="small" @click.native="_alert(scope.data.chinese.value , $event)" v-if="test">查看</r-button>
-    </template>
-  </r-table-column>
+<!--  <r-table-column title="查看详情" align="center" width="140" v-if="test">-->
+<!--    <template slot-scope="scope">-->
+<!--      <r-button type="primary" size="small" @click.native="_alert(scope.data.chinese.value , $event)" v-if="test">查看</r-button>-->
+<!--    </template>-->
+<!--  </r-table-column>-->
 </r-table>
     </div>
 <!-- 页码 -->

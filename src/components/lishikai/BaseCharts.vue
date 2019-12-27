@@ -1,149 +1,103 @@
 <template>
-  <div>
-    <div class="crumbs">
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item>
-          <i class="el-icon-pie-chart"></i> schart图表
-        </el-breadcrumb-item>
-      </el-breadcrumb>
-    </div>
-    <div class="container">
-      <div class="plugins-tips">
-        vue-schart：vue.js封装sChart.js的图表组件。
-        访问地址：
-        <a
-          href="https://github.com/lin-xin/vue-schart"
-          target="_blank"
-        >vue-schart</a>
-      </div>
-      <div class="schart-box">
-        <div class="content-title">柱状图</div>
-        <schart class="schart" canvasId="bar" :options="options1"></schart>
-      </div>
-      <div class="schart-box">
-        <div class="content-title">折线图</div>
-        <schart class="schart" canvasId="line" :options="options2"></schart>
-      </div>
-      <div class="schart-box">
-        <div class="content-title">饼状图</div>
-        <schart class="schart" canvasId="pie" :options="options3"></schart>
-      </div>
-      <div class="schart-box">
-        <div class="content-title">环形图</div>
-        <schart class="schart" canvasId="ring" :options="options4"></schart>
-      </div>
+  <div class="pie">
+    <div id="pie1">
+      <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+      <div id="main1" style="float:left;width:1100px;height: 1000px"></div>
     </div>
   </div>
 </template>
 
 <script>
-import Schart from 'vue-schart'
+var echarts = require('echarts')
 export default {
   name: 'basecharts',
-  components: {
-    Schart
-  },
   data () {
     return {
-      options1: {
-        type: 'bar',
-        title: {
-          text: '最近一周各品类销售图'
-        },
-        bgColor: '#fbfbfb',
-        labels: ['周一', '周二', '周三', '周四', '周五'],
-        datasets: [
-          {
-            label: '家电',
-            fillColor: 'rgba(241, 49, 74, 0.5)',
-            data: [234, 278, 270, 190, 230]
-          },
-          {
-            label: '百货',
-            data: [164, 178, 190, 135, 160]
-          },
-          {
-            label: '食品',
-            data: [144, 198, 150, 235, 120]
-          }
-        ]
-      },
-      options2: {
-        type: 'line',
-        title: {
-          text: '最近几个月各品类销售趋势图'
-        },
-        bgColor: '#fbfbfb',
-        labels: ['6月', '7月', '8月', '9月', '10月'],
-        datasets: [
-          {
-            label: '家电',
-            data: [234, 278, 270, 190, 230]
-          },
-          {
-            label: '百货',
-            data: [164, 178, 150, 135, 160]
-          },
-          {
-            label: '食品',
-            data: [114, 138, 200, 235, 190]
-          }
-        ]
-      },
-      options3: {
-        type: 'pie',
-        title: {
-          text: '服装品类销售饼状图'
-        },
-        legend: {
-          position: 'left'
-        },
-        bgColor: '#fbfbfb',
-        labels: ['T恤', '牛仔裤', '连衣裙', '毛衣', '七分裤', '短裙', '羽绒服'],
-        datasets: [
-          {
-            data: [334, 278, 190, 235, 260, 200, 141]
-          }
-        ]
-      },
-      options4: {
-        type: 'ring',
-        title: {
-          text: '环形三等分'
-        },
-        showValue: false,
-        legend: {
-          position: 'bottom',
-          bottom: 40
-        },
-        bgColor: '#fbfbfb',
-        labels: ['vue', 'react', 'angular'],
-        datasets: [
-          {
-            data: [500, 500, 500]
-          }
-        ]
-      }
+      data1: []
     }
+  },
+  mounted () {
+    this.initData()
+  },
+  methods: {
+    initData: function () {
+      this.requested = true
+      this.$axios.post('http://127.0.0.1:8000/statisticForEcharts/').then(resp => {
+        console.log('-----------进入echarts加载数据')
+        // 动态数据
+        this.data1 = resp.data
+        console.log(this.data1.length)
+        // 问题遍历数据并赋值？？？？？？？？？？？？？未解决
+        var jsondataName = []
+        var jsondata = []
+        for (var i = 0; i < this.data1.length; i++) {
+          jsondataName.push(this.data1[i].key)
+          jsondata.push({
+            name: this.data1[i].key,
+            value: this.data1[i].doc_count
+          })
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main1'))
+        // 绘制图表
+        myChart.setOption({
+          title: {
+            text: '隐患数据类型统计',
+            subtext: '白山',
+            x: 'center'
+          },
+          tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+          },
+          legend: {
+            type: 'scroll',
+            orient: 'vertical',
+            right: 150,
+            top: 200,
+            bottom: 20,
+            data: jsondataName
+          },
+          series: [
+            {
+              name: '故障类型',
+              type: 'pie',
+              radius: '40%',
+              center: ['40%', '30%'],
+              data: jsondata,
+              itemStyle: {
+                emphasis: {
+                  shadowBlur: 10,
+                  shadowOffsetX: 0,
+                  shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+              }
+            }
+          ]
+        })
+      })
+    },
+    async funB () {
+      // this.$axios.defaults.headers = {'Access-Control-Allow-Origin': 'localhost:8888'}
+      this.$axios.defaults.headers = {
+        'access-control-allow-headers': 'Origin,Accept,Xrequestedwith,Contenttype',
+        'access-control-allow-methods': 'GET, POST, OPTIONS, PUT, DELETE',
+        'access-control-allow-origin': '*'
+        // 'access-control-expose-headers': 'Authorization'
+      }
+      // todo为什么post请求可以get请求不行，需要处理
+      this.$axios.defaults.headers = {'Content-Type': 'application/json'}
+      var res = await this.$axios.post('http://127.0.0.1:8000/statisticForEcharts/') // 这里的res就是axios请求回来的结果
+      console.log(res.data[0])
+      console.log(res.data[0].key)
+      console.log(res.data[0].doc_count)
+    }
+  },
+  created: function () {
+    console.log(999999999999999)
+    this.funB()
   }
 }
 </script>
-
-<style scoped>
-  .schart-box {
-    display: inline-block;
-    margin: 20px;
-  }
-  .schart {
-    width: 600px;
-    height: 400px;
-  }
-  .content-title {
-    clear: both;
-    font-weight: 400;
-    line-height: 50px;
-    margin: 10px 0;
-    font-size: 22px;
-    color: #1f2f3d;
-  }
+<style>
 </style>

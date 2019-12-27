@@ -12,6 +12,7 @@ import 'rainbow-nash/dist/rainbow-nash.css'
 import axios from 'axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import echarts from 'echarts'
 import VeLine from 'v-charts/lib/line.common'
 import VeMap from 'v-charts/lib/map.common'
 import 'echarts/lib/component/markLine'
@@ -26,6 +27,7 @@ import 'v-charts/lib/style.css'
 import Print from 'vue-print-nb'
 import store from './store/store'
 import Vuex from 'vuex'
+import 'default-passive-events'
 
 // [VeLine, VeMap].forEach(comp => {
 //    Vue.component(comp.name, comp)
@@ -34,10 +36,12 @@ import Vuex from 'vuex'
 [VeLine, VeMap].forEach(comp => {
   Vue.component(comp.name, comp)
 })
-axios.defaults.headers = {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+axios.defaults.headers = {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8', 'Access-Control-Allow-Origin': 'localhost:8888'}
+
 Vue.prototype.$axios = axios
 // axios.defaults.baseURL = '/api'
 Vue.config.productionTip = false
+Vue.prototype.$echarts = echarts
 Vue.use(Rainbow)
 Vue.use(ElementUI)
 Vue.use(Print)

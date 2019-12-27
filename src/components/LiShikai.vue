@@ -76,13 +76,13 @@
             <r-icon type="search"></r-icon><router-link to="/lishikai/table">专业分类推荐</router-link>
           </r-menu-item>
           <r-menu-item name="3-2" >
-            <r-icon type="ios-grid-view-outline"></r-icon><router-link to="/lishikai/tmpmeasure">暂控措施推荐</router-link>
+            <r-icon type="pull-request"></r-icon><router-link to="/lishikai/tmpmeasure">暂控措施推荐</router-link>
           </r-menu-item>
           <r-menu-item name="3-3" >
-            <r-icon type="ios-grid-view-outline"></r-icon><router-link to="/lishikai/regulations">规程规则推荐</router-link>
+            <r-icon type="paintbrush"></r-icon><router-link to="/lishikai/regulations">规程规则推荐</router-link>
           </r-menu-item>
           <r-menu-item name="3-4" >
-            <r-icon type="ios-grid-view-outline"></r-icon><router-link to="/lishikai/charts">专业统计</router-link>
+            <r-icon type="arrow-graph-up-right"></r-icon><router-link to="/lishikai/charts">专业统计</router-link>
           </r-menu-item>
           <!-- <r-menu-item name="2-2" href="app.html">
             <r-icon type="ios-browsers-outline"></r-icon>App 布局

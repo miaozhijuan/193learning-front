@@ -33,19 +33,19 @@
         <el-table-column type="selection" width="55" align="center"></el-table-column>
         <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
         <el-table-column prop="name" label="用户名"></el-table-column>
-        <el-table-column label="账户余额">
-          <template slot-scope="scope">￥{{scope.row.money}}</template>
-        </el-table-column>
-        <el-table-column label="头像(查看大图)" align="center">
-          <template slot-scope="scope">
-            <el-image
-              class="table-td-thumb"
-              :src="scope.row.thumb"
-              :preview-src-list="[scope.row.thumb]"
-            ></el-image>
-          </template>
-        </el-table-column>
-        <el-table-column prop="address" label="地址"></el-table-column>
+<!--        <el-table-column label="账户余额">-->
+<!--          <template slot-scope="scope">￥{{scope.row.money}}</template>-->
+<!--        </el-table-column>-->
+<!--        <el-table-column label="头像(查看大图)" align="center">-->
+<!--          <template slot-scope="scope">-->
+<!--            <el-image-->
+<!--              class="table-td-thumb"-->
+<!--              :src="scope.row.thumb"-->
+<!--              :preview-src-list="[scope.row.thumb]"-->
+<!--            ></el-image>-->
+<!--          </template>-->
+<!--        </el-table-column>-->
+        <el-table-column prop="address" label="备注"></el-table-column>
         <el-table-column label="状态" align="center">
           <template slot-scope="scope">
             <el-tag
