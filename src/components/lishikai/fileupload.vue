@@ -6,7 +6,7 @@
           <r-upload v-model="images" action="http://127.0.0.1:8000/upload_file/" :on-success="onSuccess" :on-error="onError" :on-remove="onRemove" :multiple="true" :on-preview="onPreview" :before-upload="beforeUpload" :limit="5">
             <r-button icon="ios-cloud-upload-outline">上传文件</r-button>
           </r-upload>
-          <r-button type="primary" v-if="test">处理已上传文件</r-button>
+          <r-button type="primary"  :loading = "loading"  v-if="test" @click.native="sentJsonToElastic()">处理已上传文件</r-button>
         </r-tab-pane>
       </r-tabs>
     </r-card>
@@ -18,7 +18,9 @@ export default {
   name: 'fileupload',
   data () {
     return {
-      test: false,
+      loading: false,
+      disabled: false,
+      test: true,
       common: {
         componentValue: '',
         activeMenu: '3-8',
@@ -30,6 +32,20 @@ export default {
     }
   },
   methods: {
+    async funA () {
+      var res = await this.$axios.post('http://127.0.0.1:9200/lishikai_index000/_search', this.p) // 这里的res就是axios请求回来的结果
+      let demo = res.data.hits
+      console.log(demo)
+      this.pageData = demo
+    },
+    async sentJsonToElastic () {
+      this.loading = true
+      console.log('发送json到elasticsearch')
+      var res = await this.$axios.post('http://127.0.0.1:8000/sent_json_to_elasticsearch/')
+      console.log(res)
+      this.loading = false
+      this.$message('处理完成', 'success')
+    },
     onSuccess (res, file) {
       this.images.push({
         name: file.name,
@@ -38,14 +54,12 @@ export default {
       console.log('上传成功')
       this.$message(file.name + '上传成功', 'success')
       // 成功之后添加提交按钮
-      this.test = true
     },
     onError (e, res, file) {
       this.$message(file.name + '上传失败', 'error')
     },
     onRemove (file) {
       this.$message(file.name + '被删除', 'warning')
-      this.test = false
     },
     onPreview (file) {
       this.$alert(file.url)

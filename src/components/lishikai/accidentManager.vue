@@ -8,37 +8,37 @@
   <!--&lt;!&ndash;    </a>&ndash;&gt;-->
   <r-form label-width="100" :model="formItem" :rules="ruleValidate" ref="myForm">
   <r-form-item label="隐患标题" prop="input" required>
-    <r-input v-model="formItem.input" placeholder="请输入" trim> </r-input>
+    <r-input v-model="formItem.隐患标题" placeholder="请输入" trim> </r-input>
   </r-form-item>
   <r-form-item label="隐患来源" prop="input" required>
-    <r-input v-model="formItem.input" placeholder="请输入" trim> </r-input>
+    <r-input v-model="formItem.隐患来源" placeholder="请输入" trim> </r-input>
   </r-form-item>
   <r-form-item label="隐患原因" prop="input" required>
-    <r-input v-model="formItem.input" placeholder="请输入" trim> </r-input>
+    <r-input v-model="formItem.隐患原因" placeholder="请输入" trim> </r-input>
   </r-form-item>
   <r-form-item label="专业分类" prop="input" required>
-    <r-input v-model="formItem.input" placeholder="请输入" trim> </r-input>
+    <r-input v-model="formItem.专业分类" placeholder="请输入" trim> </r-input>
   </r-form-item>
 <!--  <r-form-item label="详细分类" prop="input" >-->
 <!--    <r-input v-model="formItem.input" placeholder="请输入" trim> </r-input>-->
 <!--  </r-form-item>-->
   <r-form-item label="发现人" prop="input" required>
-    <r-input v-model="formItem.input" placeholder="请输入" trim> </r-input>
+    <r-input v-model="formItem.发现人" placeholder="请输入" trim> </r-input>
   </r-form-item>
 <!--  <r-form-item label="发现人单位" prop="input" >-->
 <!--    <r-input v-model="formItem.input" placeholder="请输入" trim> </r-input>-->
 <!--  </r-form-item>-->
-  <r-form-item label="发现日期" prop="input" >
-    <r-input v-model="formItem.input" placeholder="请输入" trim> </r-input>
-  </r-form-item>
+<!--  <r-form-item label="发现日期" prop="input" >-->
+<!--    <r-input v-model="formItem.input" placeholder="请输入" trim> </r-input>-->
+<!--  </r-form-item>-->
   <r-form-item label="事故隐患内容" prop="input" required>
-    <r-input v-model="formItem.input" placeholder="请输入" trim> </r-input>
+    <r-input v-model="formItem.事故隐患内容" placeholder="请输入" trim> </r-input>
   </r-form-item>
   <r-form-item label="可能导致后果" prop="input" >
-    <r-input v-model="formItem.input" placeholder="请输入" trim> </r-input>
+    <r-input v-model="formItem.可能导致后果" placeholder="请输入" trim> </r-input>
   </r-form-item>
   <r-form-item label="防控措施" prop="input" >
-    <r-input v-model="formItem.input" placeholder="请输入" trim required> </r-input>
+    <r-input v-model="formItem.防控措施" placeholder="请输入" trim required> </r-input>
   </r-form-item>
 <!--  <r-form-item label="隐患类别" prop="select">-->
 <!--    <r-select v-model="formItem.select" clearable>-->
@@ -50,7 +50,7 @@
   <r-form-item label="发现日期">
     <div style="display:flex; align-items:baseline">
       <r-form-item prop="date">
-        <r-datepicker v-model="formItem.date" clearable></r-datepicker>
+        <r-datepicker v-model="formItem.发现日期" clearable></r-datepicker>
       </r-form-item><span style="flex-basis:50px;text-align:center">-</span>
 <!--      <r-form-item prop="time">-->
 <!--        <r-timepicker v-model="formItem.time" clearable></r-timepicker>-->
@@ -129,99 +129,108 @@ export default {
   data () {
     return {
       formItem: {
-        input: '',
-        select: '',
-        radio: '',
-        checkbox: [],
-        switch: true,
-        date: '',
-        time: '',
-        textarea: '',
-        tels: {
-          items: [{value: ''}]
-        },
-        ajaxValue: '',
-        images: []
-      },
-      ruleValidate: {
-        input: [
-          {
-            validate: this.required,
-            msg: '输入不能为空'
-          }
-          // {
-          //   validate: function (value, callback) {
-          //     if (/^\d+$/.test(value)) {
-          //       // eslint-disable-next-line standard/no-callback-literal
-          //       callback(true)
-          //     } else {
-          //       // eslint-disable-next-line standard/no-callback-literal
-          //       callback(false, '请输入数字')
-          //     }
-          //   }
-          // }
-        ],
-        select: [
-          {
-            validate: this.required,
-            msg: '选择不能为空'
-          }
-        ],
-        radio: [
-          {
-            validate: this.required,
-            msg: 'radio不能为空'
-          }
-        ],
-        checkbox: [
-          {
-            validate: this.required,
-            msg: 'checkbox不能为空'
-          }
-        ],
-        date: [
-          {
-            validate: this.required,
-            msg: 'date不能为空'
-          }
-        ],
-        time: [
-          {
-            validate: this.required,
-            msg: 'time不能为空'
-          }
-        ],
-        ajaxValue: [
-          {
-            validate (value, callback) {
-              if (value.trim().length === 0) {
-                // eslint-disable-next-line standard/no-callback-literal
-                callback(false, '不能为空')
-                return
-              }
-
-              setTimeout(_ => {
-                // eslint-disable-next-line eqeqeq
-                if (value == 'ajax') {
-                  // eslint-disable-next-line standard/no-callback-literal
-                  callback(true)
-                } else {
-                  // eslint-disable-next-line standard/no-callback-literal
-                  callback(false)
-                }
-              }, 1000)
-            },
-            msg: '远程验证失败',
-            loadingMsg: '请求ing....'
-          }
-        ],
-        images: [
-          {
-            validate: this.required,
-            msg: '图片不能为空'
-          }
-        ]
+        隐患标题: '',
+        隐患来源: '',
+        隐患原因: '',
+        专业分类: '',
+        发现人: '',
+        事故隐患内容: '',
+        可能导致后果: '',
+        防控措施: '',
+        发现日期: ''
+        // input: '',
+        // select: '',
+        // radio: '',
+        // checkbox: [],
+        // switch: true,
+        // date: '',
+        // time: '',
+        // textarea: '',
+        // tels: {
+        //   items: [{value: ''}]
+        // },
+        // ajaxValue: '',
+        // images: []
       }
+      //     ruleValidate: {
+      //       input: [
+      //         {
+      //           validate: this.required
+      //           // msg: '输入不能为空'
+      //         }
+      //         // {
+      //         //   validate: function (value, callback) {
+      //         //     if (/^\d+$/.test(value)) {
+      //         //       // eslint-disable-next-line standard/no-callback-literal
+      //         //       callback(true)
+      //         //     } else {
+      //         //       // eslint-disable-next-line standard/no-callback-literal
+      //         //       callback(false, '请输入数字')
+      //         //     }
+      //         //   }
+      //         // }
+      //       ],
+      //       select: [
+      //         {
+      //           validate: this.required,
+      //           msg: '选择不能为空'
+      //         }
+      //       ],
+      //       radio: [
+      //         {
+      //           validate: this.required,
+      //           msg: 'radio不能为空'
+      //         }
+      //       ],
+      //       checkbox: [
+      //         {
+      //           validate: this.required,
+      //           msg: 'checkbox不能为空'
+      //         }
+      //       ],
+      //       date: [
+      //         {
+      //           validate: this.required
+      //           // msg: 'date不能为空'
+      //         }
+      //       ],
+      //       time: [
+      //         {
+      //           validate: this.required,
+      //           msg: 'time不能为空'
+      //         }
+      //       ],
+      //       ajaxValue: [
+      //         {
+      //           validate (value, callback) {
+      //             if (value.trim().length === 0) {
+      //               // eslint-disable-next-line standard/no-callback-literal
+      //               callback(false, '不能为空')
+      //               return
+      //             }
+      //
+      //             setTimeout(_ => {
+      //               // eslint-disable-next-line eqeqeq
+      //               if (value == 'ajax') {
+      //                 // eslint-disable-next-line standard/no-callback-literal
+      //                 callback(true)
+      //               } else {
+      //                 // eslint-disable-next-line standard/no-callback-literal
+      //                 callback(false)
+      //               }
+      //             }, 1000)
+      //           },
+      //           msg: '远程验证失败',
+      //           loadingMsg: '请求ing....'
+      //         }
+      //       ],
+      //       images: [
+      //         {
+      //           validate: this.required,
+      //           msg: '图片不能为空'
+      //         }
+      //       ]
+      //     }
     }
   },
   methods: {
@@ -256,15 +265,20 @@ export default {
       this.formItem.tels.items.splice(idx, 1)
     },
 
-    submit () {
+    async submit () {
       console.log(JSON.stringify(this.formItem))
       this.$refs.myForm.validate((_, item) => {
         console.log(_, item)
       })
+      // todo 提交到后台后台直接处理json数据
+      var res = await this.$axios.post('http://127.0.0.1:8000/processHandleInput/', this.formItem)
+      console.log(res)
     },
 
     reset () {
       this.$refs.myForm.reset()
+      // 这里竟然可以直接用json进行表单赋值操作，太爽了吧 todo vue很强大这里直接赋值给vuex通过vuex管理保存数据
+      this.formItem = {'隐患标题': '1111111', '隐患来源': '11111111', '隐患原因': '1111111', '专业分类': '1111111111', '发现人': '111111111', '事故隐患内容': '111111111', '可能导致后果': '111111111111', '防控措施': '111111111', '发现日期': '2019-12-04'}
     },
 
     onSuccess (res, file) {
