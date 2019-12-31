@@ -1,7 +1,7 @@
 <template>
   <div class="login-wrap">
     <div class="ms-login">
-      <div class="ms-title">后台管理系统</div>
+      <div class="ms-title">事故隐患排查治理后台</div>
       <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
         <el-form-item prop="username">
           <el-input v-model="param.username" placeholder="username">
@@ -43,7 +43,24 @@ export default {
   },
   methods: {
     submitForm () {
+      // eslint-disable-next-line no-unused-vars
+      let submit = 'admin'
       this.$refs.login.validate(valid => {
+        let jsonAdmin = JSON.parse(localStorage.getItem('users'))
+        for (let i = 0; i < jsonAdmin.length; i++) {
+          console.log(jsonAdmin[i].username)
+          if (this.param.username === jsonAdmin[i].username) {
+            if (this.param.password === jsonAdmin[i].password) {
+              console.log('登陆成功')
+              valid = true
+            } else {
+              valid = false
+            }
+          } else {
+            valid = false
+          }
+        }
+        // todo 添加拦截校验
         if (valid) {
           this.$message.success('登录成功')
           localStorage.setItem('ms_username', this.param.username)

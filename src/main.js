@@ -28,7 +28,8 @@ import Print from 'vue-print-nb'
 import store from './store/store'
 import Vuex from 'vuex'
 import 'default-passive-events'
-
+import vueLocalStorage from 'vue-localstorage'
+import uploader from 'vue-simple-uploader'
 // [VeLine, VeMap].forEach(comp => {
 //    Vue.component(comp.name, comp)
 // })
@@ -46,6 +47,15 @@ Vue.use(Rainbow)
 Vue.use(ElementUI)
 Vue.use(Print)
 Vue.use(Vuex)
+Vue.use(vueLocalStorage)
+Vue.use(uploader)
+// todo放入预定义用户支持对用户的增删改查
+let users = []
+users.push(JSON.parse('{"username":"admin","password":"123"}'))
+let parsed = JSON.stringify(users)
+localStorage.setItem('users', parsed)
+console.log(JSON.parse(localStorage.getItem('users'))[0].username)
+
 let vm = new Vue({
   el: '#app',
   router,

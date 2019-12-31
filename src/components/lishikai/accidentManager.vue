@@ -1,7 +1,9 @@
 <template>
   <div id = "card">
+    <r-card>
+      <r-tabs v-model="common.tab">
+        <r-tab-pane name="1" label="手工录入">
     <r-card hover="true" style="margin: 200px; width: 800px;">
-      <p slot="title">手工录入</p>
   <!--&lt;!&ndash;    <a href="#" slot="extra">&ndash;&gt;-->
   <!--&lt;!&ndash;      <r-icon type="ios-loop-strong"></r-icon>&ndash;&gt;-->
   <!--&lt;!&ndash;      <span>换一换</span>&ndash;&gt;-->
@@ -121,6 +123,9 @@
 <!--  </r-form>-->
 
 <!--    </div>-->
+        </r-tab-pane>
+      </r-tabs>
+    </r-card>
   </div>
 </template>
 <script>
@@ -128,6 +133,12 @@ export default {
   name: 'accidentManager',
   data () {
     return {
+      common: {
+        componentValue: '',
+        activeMenu: '3-8',
+        tab: '',
+        tab2: ''
+      },
       formItem: {
         隐患标题: '',
         隐患来源: '',
@@ -290,3 +301,35 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .r-card-head {
+    display: none;
+  }
+  .r-tabs {
+    position: fixed;
+    width: 1000px;
+    height: 500px;
+    left: 420px;
+    top: 100px;
+    margin-top: 0px;
+    margin-left: -199px;
+  }
+  #card > .r-card > .r-card-body {
+    left: 170px;
+    top:160px;
+    position: fixed;
+
+  }
+  #card > .r-card {
+    border: none;
+  }
+  #card {
+    position: fixed;
+
+  }
+  .r-card {
+    position: fixed;
+    top:-60px;
+    left: 10px;
+  }
+</style>

@@ -132,8 +132,8 @@
 <!--  </r-card>-->
 </div>
 </template>
-
 <script>
+// import vueLocalStorage from 'vue-localstorage'
 export default {
   name: 'table',
   data () {
@@ -362,6 +362,13 @@ export default {
       this.lists.splice(index, 1)
       // 解决删除问题
       this.$store.state.pageData = this.lists
+      const parsed = JSON.stringify(this.lists)
+      localStorage.setItem('lists', parsed)
+      // vueLocalStorage.set('pageData', this.lists)
+      // console.log('localstorage删除存入' + vueLocalStorage.get('pageData'))
+      // localStorage.setItem('pageData', this.lists)
+      // eslint-disable-next-line no-undef      这两个localstore
+      // VueLocalStorage.set()
       console.log(this.lists)
       // 进行检索和渲染
       this.searchUser()
@@ -442,10 +449,22 @@ export default {
       console.log(this.$store.state.pageData)
       if (this.lists.length > 0) {
         this.$store.state.pageData = this.lists
+        const parsed = JSON.stringify(this.lists)
+        localStorage.setItem('lists', parsed)
+        // vueLocalStorage.set('pageData', this.lists)
+        // console.log('存入localstorage' + vueLocalStorage.get('pageData'))
+        // localStorage.setItem('pageData', this.lists)
       }
       if (this.$store.state.pageData.length > 0) {
         this.lists = this.$store.state.pageData
+        // this.lists = localStorage.getItem('pageData')
       }
+      if (localStorage.getItem('lists')) {
+        this.lists = JSON.parse(localStorage.getItem('lists'))
+      }
+      // if (localStorage.getItem('pageData').length > 0) {
+      //   this.lists = localStorage.getItem('pageData')
+      // }
       // list for 循环
       this.p = '{"query":{"bool":{"must":['
       for (var i = 0; i < this.lists.length; i++) {
@@ -455,7 +474,7 @@ export default {
           this.p = this.p + '{"match_phrase":{"事故隐患内容":"' + this.lists[i].title + '"}},'
         }
       }
-      this.p = this.p + ']}}}'
+      this.p = this.p + ']}},"collapse":{"field": "事故隐患内容.keyword"}}'
       console.log(this.p)
       // var p1 = JSON.parse(JSON.stringify(this.p))
       // param 没有发送过去,中文乱码问题 {params: this.p, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}}
@@ -476,6 +495,15 @@ export default {
   },
   created: function () {
     this.lists = this.$store.state.pageData
+    if (localStorage.getItem('lists')) {
+      this.lists = JSON.parse(localStorage.getItem('lists'))
+    }
+    // localStorage.setItem('pageData', this.lists)
+    // vueLocalStorage.set('pageData', this.lists)
+    // vueLocalStorage.set('pageData', this.lists)
+    // let test = vueLocalStorage.get('pageData')
+    // console.log('-------------------存入localstorage' + test)
+    // this.lists = localStorage.getItem('pageData')
     this.searchUser()
     // this.$axios.post('http://127.0.0.1:8008/index/', this.p).then(res => {
     //   //   console.log(p1)

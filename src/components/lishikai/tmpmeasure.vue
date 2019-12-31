@@ -455,7 +455,7 @@ export default {
           this.p = this.p + '{"match_phrase":{"事故隐患内容":"' + this.lists[i].title + '"}},'
         }
       }
-      this.p = this.p + ']}}}'
+      this.p = this.p + ']}},"collapse":{"field": "事故隐患内容.keyword"}}'
       console.log(this.p)
       // var p1 = JSON.parse(JSON.stringify(this.p))
       // param 没有发送过去,中文乱码问题 {params: this.p, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}}
