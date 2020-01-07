@@ -7,7 +7,7 @@
         </div>
         <div id="log">
         <r-icon type="paper-airplane"></r-icon>
-        <r-dropdown label="李仕凯" style="margin-left: 8px">
+        <r-dropdown label="admin" style="margin-left: 8px">
           <r-dropdown-item>个人信息</r-dropdown-item>
           <r-dropdown-item>登出</r-dropdown-item>
         </r-dropdown>
@@ -17,7 +17,7 @@
   <r-menu value="-1" style="width:200px" mode="vertical" slot="aside" expand>
   <r-menu-item name="0" ><r-icon type="paper-airplane"></r-icon>操作菜单</r-menu-item>
   <r-menu-item name="1">
-    <r-icon type="ios-paper"></r-icon><router-link to="/lishikai/sunshengze">内容管理</router-link>
+    <r-icon type="ios-paper"></r-icon><router-link to="/knowclient/sunshengze">内容管理</router-link>
   </r-menu-item>
   <r-sub-menu name="2" >
           <template slot="title"><span id="title"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;Basic</span></template>
@@ -44,15 +44,15 @@
           </r-menu-item> -->
         </r-sub-menu>
   <r-menu-item name="2">
-    <r-icon type="ios-people"></r-icon><router-link to="/lishikai/yuanxingliang">用户管理</router-link>
+    <r-icon type="ios-people"></r-icon><router-link to="/knowclient/yuanxingliang">用户管理</router-link>
   </r-menu-item>
   <r-sub-menu name="3">
     <template slot="title">
       <span id="title2"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;开发人员</span>
     </template>
     <r-menu-group title="">
-      <r-menu-item name="3-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/sunshengze">孙圣泽</router-link></r-menu-item>
-      <r-menu-item name="3-2"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/yuanxingliang">袁星亮</router-link></r-menu-item>
+      <r-menu-item name="3-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/knowclient/sunshengze">孙圣泽</router-link></r-menu-item>
+      <r-menu-item name="3-2"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/knowclient/yuanxingliang">袁星亮</router-link></r-menu-item>
       <r-menu-item name="3-3"><r-icon type="ios-browsers-outline"></r-icon>李仕凯</r-menu-item>
     </r-menu-group>
     <!-- <r-menu-group title="">

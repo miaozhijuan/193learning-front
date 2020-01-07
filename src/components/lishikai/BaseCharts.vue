@@ -22,7 +22,8 @@ export default {
   methods: {
     initData: function () {
       this.requested = true
-      this.$axios.post('http://127.0.0.1:8000/statisticForEcharts/').then(resp => {
+      var url = this.global_request_url.requestMapData
+      this.$axios.post(url).then(resp => {
         console.log('-----------进入echarts加载数据')
         // 动态数据
         this.data1 = resp.data
@@ -95,7 +96,7 @@ export default {
   },
   created: function () {
     console.log(999999999999999)
-    this.funB()
+    // this.funB()
   }
 }
 </script>

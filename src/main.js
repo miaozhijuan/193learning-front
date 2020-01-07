@@ -30,6 +30,7 @@ import Vuex from 'vuex'
 import 'default-passive-events'
 import vueLocalStorage from 'vue-localstorage'
 import uploader from 'vue-simple-uploader'
+import global_ from './components/global/Global'// 引用文件
 // [VeLine, VeMap].forEach(comp => {
 //    Vue.component(comp.name, comp)
 // })
@@ -37,6 +38,7 @@ import uploader from 'vue-simple-uploader'
 [VeLine, VeMap].forEach(comp => {
   Vue.component(comp.name, comp)
 })
+Vue.prototype.global_request_url = global_ // 全局变量文件,挂载到Vue实例上面
 axios.defaults.headers = {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8', 'Access-Control-Allow-Origin': 'localhost:8888'}
 
 Vue.prototype.$axios = axios

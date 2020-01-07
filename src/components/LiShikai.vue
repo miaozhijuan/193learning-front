@@ -32,7 +32,7 @@
         <div id="log">
           <r-icon type="paper-airplane"></r-icon>
           <el-dropdown @command="userOperation">
-            <span class="user">李仕凯<i class="el-icon-caret-bottom el-icon--right"></i></span>
+            <span class="user">admin<i class="el-icon-caret-bottom el-icon--right"></i></span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command="editPaw">修改密码</el-dropdown-item>
               <el-dropdown-item command="logout"><router-link to="/login">登出</router-link></el-dropdown-item>
@@ -68,21 +68,21 @@
   <r-menu  style="width:200px" mode="vertical" expand="true" v-model="activeMenu"   slot="aside" expend>
   <r-menu-item><r-icon type="paper-airplane"></r-icon>操作菜单</r-menu-item>
   <r-menu-item name="2">
-    <r-icon type="ios-paper"></r-icon><router-link to="/lishikai/map">内容管理</router-link>
+    <r-icon type="ios-paper"></r-icon><router-link to="/knowclient/map">内容管理</router-link>
   </r-menu-item>
   <r-sub-menu name="3">
           <template slot="title"><span id="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="network"></r-icon>&nbsp;&nbsp;&nbsp;隐患统计分析</span></template>
           <r-menu-item name="3-1" >
-            <r-icon type="search"></r-icon><router-link to="/lishikai/table">专业分类推荐</router-link>
+            <r-icon type="search"></r-icon><router-link to="/knowclient/table">专业分类推荐</router-link>
           </r-menu-item>
           <r-menu-item name="3-2" >
-            <r-icon type="pull-request"></r-icon><router-link to="/lishikai/tmpmeasure">暂控措施推荐</router-link>
+            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/tmpmeasure">暂控措施推荐</router-link>
           </r-menu-item>
           <r-menu-item name="3-3" >
-            <r-icon type="paintbrush"></r-icon><router-link to="/lishikai/regulations">规程规则推荐</router-link>
+            <r-icon type="paintbrush"></r-icon><router-link to="/knowclient/regulations">规程规则推荐</router-link>
           </r-menu-item>
           <r-menu-item name="3-4" >
-            <r-icon type="arrow-graph-up-right"></r-icon><router-link to="/lishikai/charts">专业统计</router-link>
+            <r-icon type="arrow-graph-up-right"></r-icon><router-link to="/knowclient/charts">专业统计</router-link>
           </r-menu-item>
           <!-- <r-menu-item name="2-2" href="app.html">
             <r-icon type="ios-browsers-outline"></r-icon>App 布局
@@ -99,9 +99,9 @@
 <!--      <span id="title2"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;开发人员</span>-->
 <!--    </template>-->
 <!--    <r-menu-group title="">-->
-<!--      &lt;!&ndash; <r-menu-item name="3-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/sunshengze">孙圣泽</router-link></r-menu-item>-->
-<!--      <r-menu-item name="3-2"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/yuanxingliang">袁星亮</router-link></r-menu-item> &ndash;&gt;-->
-<!--      <r-menu-item name="5-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/lishikai/yuanxingliang">李仕凯</router-link></r-menu-item>-->
+<!--      &lt;!&ndash; <r-menu-item name="3-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/knowclient/sunshengze">孙圣泽</router-link></r-menu-item>-->
+<!--      <r-menu-item name="3-2"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/knowclient/yuanxingliang">袁星亮</router-link></r-menu-item> &ndash;&gt;-->
+<!--      <r-menu-item name="5-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/knowclient/yuanxingliang">李仕凯</router-link></r-menu-item>-->
 <!--    </r-menu-group>-->
 <!--    &lt;!&ndash; <r-menu-group title="">-->
 <!--      <r-menu-item name="3-4"><r-icon type="ios-browsers-outline"></r-icon>用户留存</r-menu-item>-->
@@ -111,14 +111,14 @@
     <r-sub-menu name="5">
       <template slot="title"><span id="title3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="settings"></r-icon>&nbsp;&nbsp;&nbsp;隐患事件管理</span></template>
   <r-menu-item name="5-1">
-    <r-icon type="clipboard"></r-icon><router-link to="/lishikai/accidentManager">&nbsp;手工录入管理</router-link>
+    <r-icon type="clipboard"></r-icon><router-link to="/knowclient/accidentManager">&nbsp;手工录入管理</router-link>
   </r-menu-item>
       <r-menu-item name="5-2">
-      <r-icon type="ios-cloud-upload"></r-icon><router-link to="/lishikai/fileupload">文件导入管理</router-link>
+      <r-icon type="ios-cloud-upload"></r-icon><router-link to="/knowclient/fileupload">文件导入管理</router-link>
       </r-menu-item>
     </r-sub-menu>
     <r-menu-item name="4">
-      <r-icon type="ios-people"></r-icon><router-link to="/lishikai/user">用户管理</router-link>
+      <r-icon type="ios-people"></r-icon><router-link to="/knowclient/user">用户管理</router-link>
     </r-menu-item>
 </r-menu>
 </div>

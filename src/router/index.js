@@ -14,6 +14,7 @@ import regulations from '../components/lishikai/regulations'
 import accidentManager from '../components/lishikai/accidentManager'
 import fileupload from '../components/lishikai/fileupload'
 import fileupload2 from '../components/lishikai/fileupload2'
+import knowledgeGraph from '../components/knowlegeGraph/knowledgeGraph'
 Vue.use(Router)
 
 export default new Router({
@@ -24,7 +25,8 @@ export default new Router({
       component: Login
     },
     {
-      path: '/lishikai',
+      // path: '/lishikai',
+      path: '/knowclient',
       name: 'LiShikai',
       component: LiShikai,
       children: [{
@@ -81,6 +83,11 @@ export default new Router({
         path: 'fileupload2',
         name: 'fileupload2',
         component: fileupload2
+      },
+      {
+        path: 'knowledgeGraph',
+        name: 'knowledgeGraph',
+        component: knowledgeGraph
       }
       ]
     },

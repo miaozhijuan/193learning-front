@@ -421,7 +421,8 @@ export default {
       this.$message('点击了第' + data.id + '条')
     },
     async funA () {
-      var res = await this.$axios.post('http://127.0.0.1:9200/lishikai_index000/_search', this.p) // 这里的res就是axios请求回来的结果
+      var url = this.global_request_url.requestESURL
+      var res = await this.$axios.post(url, this.p) // 这里的res就是axios请求回来的结果
       let demo = res.data.hits
       console.log(demo)
       this.pageData = demo
@@ -466,7 +467,8 @@ export default {
       //   console.log(demo)
       //   this.pageData = demo
       // })
-      var res = await this.$axios.post('http://127.0.0.1:9200/lishikai_index000/_search', this.p) // 这里的res就是axios请求回来的结果
+      var url = this.global_request_url.requestESURL
+      var res = await this.$axios.post(url, this.p) // 这里的res就是axios请求回来的结果
       let demo = res.data.hits
       console.log(demo)
       this.pageData = demo

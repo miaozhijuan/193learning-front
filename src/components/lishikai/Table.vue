@@ -333,6 +333,10 @@ export default {
       })
     },
     initDataVue () {
+      // 每一次查询过来的数据都用来更新storage
+      console.log('typeof pageData' + typeof this.pageData)
+      let parsed = JSON.stringify(this.pageData)
+      localStorage.setItem('queryReturnData', parsed)
       this.total = this.pageData.total.value
       for (var i = 0; i < this.pageData.total.value; i++) {
         let value = this.pageData.hits[i]._source.事故隐患内容
@@ -428,7 +432,9 @@ export default {
       this.$message('点击了第' + data.id + '条')
     },
     async funA () {
-      var res = await this.$axios.post('http://127.0.0.1:9200/lishikai_index000/_search', this.p) // 这里的res就是axios请求回来的结果
+      var url = this.global_request_url.requestESURL
+      var res = await this.$axios.post(url, this.p) // 这里的res就是axios请求回来的结果
+      // var res = await this.$axios.post('http://127.0.0.1:9200/lishikai_index000/_search', this.p) // 这里的res就是axios请求回来的结果
       let demo = res.data.hits
       console.log(demo)
       this.pageData = demo
@@ -485,9 +491,11 @@ export default {
       //   console.log(demo)
       //   this.pageData = demo
       // })
-      var res = await this.$axios.post('http://127.0.0.1:9200/lishikai_index000/_search', this.p) // 这里的res就是axios请求回来的结果
+      var url = this.global_request_url.requestESURL
+      // var res = await this.$axios.post('http://127.0.0.1:9200/lishikai_index000/_search', this.p) // 这里的res就是axios请求回来的结果
+      var res = await this.$axios.post(url, this.p) // 这里的res就是axios请求回来的结果
       let demo = res.data.hits
-      console.log(demo)
+      console.log(demo + typeof demo)
       this.pageData = demo
       this.data1 = []
       this.initDataVue()
