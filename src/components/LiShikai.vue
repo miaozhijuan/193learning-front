@@ -138,9 +138,9 @@
           <r-menu-item name="6-3" >
             <r-icon type="pull-request"></r-icon><router-link to="/knowclient/map">各专业隐患数量统计</router-link>
           </r-menu-item>
-          <r-menu-item name="6-4" >
-            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/tmpmeasure">隐患完成情况统计</router-link>
-          </r-menu-item>
+<!--          <r-menu-item name="6-4" >-->
+<!--            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/tmpmeasure">隐患完成情况统计</router-link>-->
+<!--          </r-menu-item>-->
           <r-menu-item name="6-5" >
             <r-icon type="pull-request"></r-icon><router-link to="/knowclient/datasetEncode0">隐患来源统计</router-link>
           </r-menu-item>

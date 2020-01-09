@@ -2,7 +2,7 @@
   <div class="pie">
     <div id="pie1">
       <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
-      <div id="main1" style="float:left;width:1100px;height: 1000px"></div>
+      <div id="main1" style="float:left;width:100%;height: 800px"></div>
     </div>
   </div>
 </template>
@@ -58,8 +58,8 @@ export default {
           legend: {
             type: 'scroll',
             orient: 'vertical',
-            right: 150,
-            top: 200,
+            right: 10,
+            top: 20,
             bottom: 20,
             data: jsondataName
           },
@@ -67,8 +67,8 @@ export default {
             {
               name: '故障类型',
               type: 'pie',
-              radius: '40%',
-              center: ['40%', '30%'],
+              radius: '55%',
+              center: ['40%', '50%'],
               data: jsondata,
               itemStyle: {
                 emphasis: {

@@ -35,6 +35,7 @@ export default {
       this.$axios.post(url, param).then(resp => {
       // 处理完成之后的json数据
         let returnData = resp.data
+        returnData = new Array(returnData)
         console.log('returndata=================' + returnData)
         console.log(returnData)
         returnData = JSON.stringify(returnData)

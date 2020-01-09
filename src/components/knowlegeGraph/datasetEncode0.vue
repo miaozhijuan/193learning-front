@@ -12,7 +12,7 @@
 
 <!--    <el-rate v-model="value1"></el-rate>-->
   <div id="knowledge">
-    <iframe :src='imageSource' scrolling="no" style="width: 100%;height: 800px;" frameborder="0"></iframe>
+    <iframe :src='imageSource' scrolling="no" style="margin-left:-100px;width: 1500px;height: 800px;" frameborder="0"></iframe>
   </div>
 </template>
 

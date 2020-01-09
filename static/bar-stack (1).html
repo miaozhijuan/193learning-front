@@ -46,11 +46,25 @@ option = {
         }
     ],
     series: [
-        {
-            name: '日常巡视',
-            type: 'bar',
-            data: [602, 489, 486, 464, 324, 319, 283, 282, 199, 183]
-        },
+        // {
+        //     name: '日常巡视',
+        //     type: 'bar',
+        //     data: [602, 489, 486, 464, 324, 319, 283, 282, 199, 183]
+        // },
+      {
+        name: '日常巡视',
+        type: 'bar',
+        // stack: '其他隐患',
+        data: [602, 489, 486, 464, 324, 319, 283, 282, 199, 183],
+        markLine: {
+          lineStyle: {
+            type: 'dashed'
+          },
+          data: [
+            [{type: 'min'}, {type: 'max'}]
+          ]
+        }
+      },
         {
             name: '安全检查',
             type: 'bar',
@@ -85,7 +99,7 @@ option = {
         {
             name: '电网专项',
             type: 'bar',
-            barWidth: 5,
+            barWidth: 20,
             stack: '其他隐患',
             data: [3, 2, 2, 1, 1, 1, 1, 1, 1, 1]
         },
