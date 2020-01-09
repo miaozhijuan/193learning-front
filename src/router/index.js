@@ -15,6 +15,12 @@ import accidentManager from '../components/lishikai/accidentManager'
 import fileupload from '../components/lishikai/fileupload'
 import fileupload2 from '../components/lishikai/fileupload2'
 import knowledgeGraph from '../components/knowlegeGraph/knowledgeGraph'
+import knowledgeGraphReason from '../components/knowlegeGraph/knowledgeGraph-reason'
+import lineStack from '../components/knowlegeGraph/lineStack'
+import barLabelRotation from '../components/knowlegeGraph/barLabelRotation'
+import pieCustom from '../components/knowlegeGraph/pieCustom'
+import datasetEncode0 from '../components/knowlegeGraph/datasetEncode0'
+import barStack from '../components/knowlegeGraph/barStack'
 Vue.use(Router)
 
 export default new Router({
@@ -33,11 +39,6 @@ export default new Router({
         path: 'sunshengze',
         name: 'SunShengze',
         component: SunShengze
-      },
-      {
-        path: 'yuanxingliang',
-        name: 'YuanXingliang',
-        component: YuanXingliang
       },
       {
         path: 'table',
@@ -88,6 +89,36 @@ export default new Router({
         path: 'knowledgeGraph',
         name: 'knowledgeGraph',
         component: knowledgeGraph
+      },
+      {
+        path: 'knowledgeGraphReason',
+        name: 'knowledgeGraphReason',
+        component: knowledgeGraphReason
+      },
+      {
+        path: 'lineStack',
+        name: 'lineStack',
+        component: lineStack
+      },
+      {
+        path: 'barLabelRotation',
+        name: 'barLabelRotation',
+        component: barLabelRotation
+      },
+      {
+        path: 'pieCustom',
+        name: 'pieCustom',
+        component: pieCustom
+      },
+      {
+        path: 'datasetEncode0',
+        name: 'datasetEncode0',
+        component: datasetEncode0
+      },
+      {
+        path: 'barStack',
+        name: 'barStack',
+        component: barStack
       }
       ]
     },

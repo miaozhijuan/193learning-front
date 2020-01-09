@@ -32,10 +32,10 @@
         <div id="log">
           <r-icon type="paper-airplane"></r-icon>
           <el-dropdown @command="userOperation">
-            <span class="user">admin<i class="el-icon-caret-bottom el-icon--right"></i></span>
+            <span class="user">{{this.editPaw.LoginUserName}}<i class="el-icon-caret-bottom el-icon--right"></i></span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command="editPaw">修改密码</el-dropdown-item>
-              <el-dropdown-item command="logout"><router-link to="/login">登出</router-link></el-dropdown-item>
+              <el-dropdown-item command="logout">登出</el-dropdown-item>
 <!--              <el-dropdown-item @click="editPaw3">修改密码</el-dropdown-item>-->
 <!--              <el-dropdown-item @click="editPaw3">登出</el-dropdown-item>-->
             </el-dropdown-menu>
@@ -63,27 +63,36 @@
           </div>
         </el-dialog>
       </div>
-  <div slot="aside">
+  <div slot="aside" >
 <!--    value="3-1"-->
   <r-menu  style="width:200px" mode="vertical" expand="true" v-model="activeMenu"   slot="aside" expend>
   <r-menu-item><r-icon type="paper-airplane"></r-icon>操作菜单</r-menu-item>
-  <r-menu-item name="2">
-    <r-icon type="ios-paper"></r-icon><router-link to="/knowclient/map">内容管理</router-link>
-  </r-menu-item>
+    <r-sub-menu name="5">
+      <template slot="title"><span id="title3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="settings"></r-icon>&nbsp;&nbsp;&nbsp;隐患知识库管理</span></template>
+      <r-menu-item name="5-1">
+        <r-icon type="clipboard"></r-icon><router-link to="/knowclient/accidentManager">&nbsp;隐患信息人工录入</router-link>
+      </r-menu-item>
+      <r-menu-item name="5-2">
+        <r-icon type="ios-cloud-upload"></r-icon><router-link to="/knowclient/fileupload">隐患信息批量导入</router-link>
+      </r-menu-item>
+    </r-sub-menu>
+<!--  <r-menu-item name="2">-->
+<!--    <r-icon type="ios-paper"></r-icon><router-link to="/knowclient/map">内容管理</router-link>-->
+<!--  </r-menu-item>-->
   <r-sub-menu name="3">
-          <template slot="title"><span id="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="network"></r-icon>&nbsp;&nbsp;&nbsp;隐患统计分析</span></template>
+          <template slot="title"><span id="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="network"></r-icon>&nbsp;&nbsp;&nbsp;隐患管理智能推荐</span></template>
           <r-menu-item name="3-1" >
-            <r-icon type="search"></r-icon><router-link to="/knowclient/table">专业分类推荐</router-link>
+            <r-icon type="search"></r-icon><router-link to="/knowclient/table">专业分类智能推荐</router-link>
           </r-menu-item>
           <r-menu-item name="3-2" >
-            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/tmpmeasure">暂控措施推荐</router-link>
+            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/tmpmeasure">暂控措施智能推荐</router-link>
           </r-menu-item>
           <r-menu-item name="3-3" >
-            <r-icon type="paintbrush"></r-icon><router-link to="/knowclient/regulations">规程规则推荐</router-link>
+            <r-icon type="paintbrush"></r-icon><router-link to="/knowclient/regulations">规程规则智能推荐</router-link>
           </r-menu-item>
-          <r-menu-item name="3-4" >
-            <r-icon type="arrow-graph-up-right"></r-icon><router-link to="/knowclient/charts">专业统计</router-link>
-          </r-menu-item>
+<!--          <r-menu-item name="3-4" >-->
+<!--            <r-icon type="arrow-graph-up-right"></r-icon><router-link to="/knowclient/charts">专业统计</router-link>-->
+<!--          </r-menu-item>-->
           <!-- <r-menu-item name="2-2" href="app.html">
             <r-icon type="ios-browsers-outline"></r-icon>App 布局
           </r-menu-item>
@@ -94,6 +103,69 @@
             <r-icon type="ios-heart-outline"></r-icon>Icon 图标
           </r-menu-item> -->
         </r-sub-menu>
+  <r-sub-menu name="2">
+          <template slot="title"><span id="title4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="network"></r-icon>&nbsp;&nbsp;&nbsp;隐患知识图谱管理</span></template>
+          <r-menu-item name="2-1" >
+            <r-icon type="search"></r-icon><router-link to="/knowclient/knowledgeGraph">隐患的专业分类图谱</router-link>
+          </r-menu-item>
+          <r-menu-item name="2-2" >
+            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/knowledgeGraphReason">隐患的原因分类图谱</router-link>
+          </r-menu-item>
+<!--          <r-menu-item name="3-3" >-->
+<!--            <r-icon type="paintbrush"></r-icon><router-link to="/knowclient/regulations">规程规则智能推荐</router-link>-->
+<!--          </r-menu-item>-->
+<!--          <r-menu-item name="3-4" >-->
+<!--            <r-icon type="arrow-graph-up-right"></r-icon><router-link to="/knowclient/charts">专业统计</router-link>-->
+<!--          </r-menu-item>-->
+          <!-- <r-menu-item name="2-2" href="app.html">
+            <r-icon type="ios-browsers-outline"></r-icon>App 布局
+          </r-menu-item>
+          <r-menu-item name="2-3" href="button.html">
+            <r-icon type="social-youtube-outline"></r-icon>Button 按钮
+          </r-menu-item>
+          <r-menu-item name="2-4" href="icon.html">
+            <r-icon type="ios-heart-outline"></r-icon>Icon 图标
+          </r-menu-item> -->
+        </r-sub-menu>
+  <r-sub-menu name="6">
+          <template slot="title"><span id="title5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="network"></r-icon>&nbsp;&nbsp;&nbsp;隐患风险统计分析</span></template>
+          <r-menu-item name="6-1" >
+            <r-icon type="search"></r-icon><router-link to="/knowclient/lineStack">单位隐患的历史趋势</router-link>
+          </r-menu-item>
+          <r-menu-item name="6-2" >
+            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/pieCustom">隐患原因统计</router-link>
+          </r-menu-item>
+          <r-menu-item name="6-3" >
+            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/map">各专业隐患数量统计</router-link>
+          </r-menu-item>
+          <r-menu-item name="6-4" >
+            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/tmpmeasure">隐患完成情况统计</router-link>
+          </r-menu-item>
+          <r-menu-item name="6-5" >
+            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/datasetEncode0">隐患来源统计</router-link>
+          </r-menu-item>
+          <r-menu-item name="6-6" >
+            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/barStack">各单位隐患数量统计</router-link>
+          </r-menu-item>
+<!--          <r-menu-item name="3-3" >-->
+<!--            <r-icon type="paintbrush"></r-icon><router-link to="/knowclient/regulations">规程规则智能推荐</router-link>-->
+<!--          </r-menu-item>-->
+<!--          <r-menu-item name="3-4" >-->
+<!--            <r-icon type="arrow-graph-up-right"></r-icon><router-link to="/knowclient/charts">专业统计</router-link>-->
+<!--          </r-menu-item>-->
+          <!-- <r-menu-item name="2-2" href="app.html">
+            <r-icon type="ios-browsers-outline"></r-icon>App 布局
+          </r-menu-item>
+          <r-menu-item name="2-3" href="button.html">
+            <r-icon type="social-youtube-outline"></r-icon>Button 按钮
+          </r-menu-item>
+          <r-menu-item name="2-4" href="icon.html">
+            <r-icon type="ios-heart-outline"></r-icon>Icon 图标
+          </r-menu-item> -->
+        </r-sub-menu>
+      <r-menu-item name="7">
+        <r-icon type="ios-paper"></r-icon><router-link to="/knowclient/">隐患内容检索</router-link>
+      </r-menu-item>
 <!--  <r-sub-menu name="5">-->
 <!--    <template slot="title">-->
 <!--      <span id="title2"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;开发人员</span>-->
@@ -108,15 +180,7 @@
 <!--      <r-menu-item name="3-5"><r-icon type="ios-browsers-outline"></r-icon>流失用户</r-menu-item>-->
 <!--    </r-menu-group> &ndash;&gt;-->
 <!--  </r-sub-menu>-->
-    <r-sub-menu name="5">
-      <template slot="title"><span id="title3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="settings"></r-icon>&nbsp;&nbsp;&nbsp;隐患事件管理</span></template>
-  <r-menu-item name="5-1">
-    <r-icon type="clipboard"></r-icon><router-link to="/knowclient/accidentManager">&nbsp;手工录入管理</router-link>
-  </r-menu-item>
-      <r-menu-item name="5-2">
-      <r-icon type="ios-cloud-upload"></r-icon><router-link to="/knowclient/fileupload">文件导入管理</router-link>
-      </r-menu-item>
-    </r-sub-menu>
+
     <r-menu-item name="4">
       <r-icon type="ios-people"></r-icon><router-link to="/knowclient/user">用户管理</router-link>
     </r-menu-item>
@@ -144,7 +208,8 @@ export default {
       editPaw: {
         oldPaw: '',
         newPaw: '',
-        confirmNewPaw: ''
+        confirmNewPaw: '',
+        LoginUserName: localStorage.getItem('LoginUser') === '' || localStorage.getItem('LoginUser').length === 0 ? this.$router.push('/login') : localStorage.getItem('LoginUser')
       },
       editPawRules: {
         oldPaw: [
@@ -200,6 +265,7 @@ export default {
     userOperation (command) {
       switch (command) {
         case 'logout':
+          localStorage.setItem('LoginUser', '')
           this.logout()
           break
         case 'editPaw':
@@ -209,22 +275,54 @@ export default {
       }
     },
     logout () {
-      this.sysLogout().then(() => {
-        this.$router.push('/login')
-      })
+      // localStorage.setItem('LoginUser', '')
+      localStorage.setItem('LoginUser', '')
+      this.$router.push('/login')
     },
     editPawSubmit () {
       this.$refs.editPaw.validate((valid) => {
         if (valid) {
+          var updateFlag = false
           console.log('修改密码表单提交')
-        } else {
-          console.log('error submit!!')
-          return false
+          let jsonAdmin = JSON.parse(localStorage.getItem('users'))
+          for (let i = 0; i < jsonAdmin.length; i++) {
+            console.log(jsonAdmin[i].username)
+            if (this.editPaw.LoginUserName === jsonAdmin[i].username) {
+              jsonAdmin[i].password = this.editPaw.newPaw
+              // 重新赋值隐患
+              updateFlag = true
+              break
+              // if (this.param.password === jsonAdmin[i].password) {
+              //   console.log('登陆成功')
+              //   valid = true
+              // }
+            }
+            // else {
+            //       console.log('error submit!!')
+            //       return false
+            //     }
+          }
+          if (updateFlag) {
+            // todo 修改成功
+            let parsed = JSON.stringify(jsonAdmin)
+            localStorage.setItem('users', parsed)
+            console.log(JSON.parse(localStorage.getItem('users')))
+          } else {
+            // todo 修改失败弹框
+          }
         }
       })
+    },
+    created: function () {
+      var LoginUser = localStorage.getItem('LoginUser')
+      if (!LoginUser === '' && !LoginUser.length === 0) {
+        this.editPaw.LoginUserName = LoginUser
+      } else {
+        this.$router.push('/login')
+        // todo 请登录提示
+      }
     }
-  }
-}
+  }}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -242,6 +340,12 @@ h1, h2 {
     float: right;
 }
 #title {
+     margin-left: -103px;
+    }
+#title4 {
+     margin-left: -103px;
+    }
+#title5 {
      margin-left: -103px;
     }
 #title2 {

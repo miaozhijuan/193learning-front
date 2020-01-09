@@ -4,10 +4,10 @@ const token = '12345678'
 const hasEnter = false
 const userSite = '中国钓鱼岛'
 const requestESURL = 'http://39.106.226.131:9200/lishikai_index000/_search'
-const requestDjango = 'http://39.106.226.131:8000/kgprocess/'
-const requestMapData = 'http://39.106.226.131:8000/statisticForEcharts/'
-// const requestMapData = 'http://127.0.0.1:8000/statisticForEcharts/'
-// const requestDjango = 'http://127.0.0.1:8000/kgprocess/'
+// const requestDjango = 'http://39.106.226.131:8000/kgprocess/'
+// const requestMapData = 'http://39.106.226.131:8000/statisticForEcharts/'
+const requestMapData = 'http://127.0.0.1:8000/statisticForEcharts/'
+const requestDjango = 'http://127.0.0.1:8000/kgprocess/'
 export default
 {
   userSite, // 用户地址

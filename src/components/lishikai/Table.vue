@@ -375,7 +375,11 @@ export default {
       // VueLocalStorage.set()
       console.log(this.lists)
       // 进行检索和渲染
-      this.searchUser()
+      if (this.lists.length > 0) {
+        this.searchUser()
+      } else {
+        this.data1 = ''
+      }
     },
     keyupEnter () {
       this.addNewTag()
@@ -480,7 +484,7 @@ export default {
           this.p = this.p + '{"match_phrase":{"事故隐患内容":"' + this.lists[i].title + '"}},'
         }
       }
-      this.p = this.p + ']}},"collapse":{"field": "事故隐患内容.keyword"}}'
+      this.p = this.p + ']}},"collapse":{"field": "专业分类.keyword"}}'
       console.log(this.p)
       // var p1 = JSON.parse(JSON.stringify(this.p))
       // param 没有发送过去,中文乱码问题 {params: this.p, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}}
@@ -512,7 +516,9 @@ export default {
     // let test = vueLocalStorage.get('pageData')
     // console.log('-------------------存入localstorage' + test)
     // this.lists = localStorage.getItem('pageData')
-    this.searchUser()
+    if (this.lists.length > 0) {
+      this.searchUser()
+    }
     // this.$axios.post('http://127.0.0.1:8008/index/', this.p).then(res => {
     //   //   console.log(p1)
     //   //   let demo = res.data.hits

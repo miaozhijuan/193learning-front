@@ -18,11 +18,11 @@
 
 <script>
 export default {
-  name: 'knowledgeGraph',
+  name: 'knowledgeGraph-reason',
   data () {
     return {
       msg: 'Welcome You, lishikai!',
-      imageSource: '../../../static/knowledgeGraph.html'
+      imageSource: '../../../static/knowledgeGraphReason.html'
     }
   },
   methods: {

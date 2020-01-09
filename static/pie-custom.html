@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=w2ix5B3YHo2HBKSQlK7QRNdxnL9yA6NT&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var data = genData(50);
+
+option = {
+    title: {
+        text: '隐患数量统计',
+        subtext: '隐患原因',
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+        type: 'scroll',
+        orient: 'vertical',
+        right: 10,
+        top: 20,
+        bottom: 20,
+        data: data.legendData,
+
+        selected: data.selected
+    },
+    series: [
+        {
+            name: '隐患原因',
+            type: 'pie',
+            radius: '55%',
+            center: ['40%', '50%'],
+            data: data.seriesData,
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+
+
+
+
+function genData(count) {
+    var nameList = [
+      '人身安全隐患','设备设施隐患','电力安全隐患','其他事故隐患','安全管理隐患','电网安全隐患','消防隐患','大坝安全隐患'
+    ];
+  var jsondataName = ['人身安全隐患', '设备设施隐患', '电力安全隐患', '其他事故隐患', '安全管理隐患', '电网安全隐患', '消防隐患', '大坝安全隐患']
+  var jsondata = [{'name': '人身安全隐患', 'value': 7712}, {'name': '设备设施隐患', 'value': 6935}, {'name': '电力安全隐患', 'value': 1049}, {'name': '其他事故隐患', 'value': 706}, {'name': '安全管理隐患', 'value': 295}, {'name': '电网安全隐患', 'value': 75}, {'name': '消防隐患', 'value': 46}, {'name': '大坝安全隐患', 'value': 1}]
+    var legendData = jsondataName;
+    var seriesData = jsondata;
+    var selected = jsondata;
+
+    return {
+        legendData: legendData,
+        seriesData: seriesData,
+        selected: selected
+    };
+
+    // function makeWord(max, min) {
+    //     var nameLen = Math.ceil(Math.random() * max + min);
+    //     var name = [];
+    //     for (var i = 0; i < nameLen; i++) {
+    //         name.push(nameList[Math.round(Math.random() * nameList.length - 1)]);
+    //     }
+    //     return name.join('');
+    // }
+}
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

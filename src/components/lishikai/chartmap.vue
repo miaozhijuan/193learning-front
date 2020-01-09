@@ -38,6 +38,10 @@ export default {
             value: this.data1[i].doc_count
           })
         }
+        console.log('---------------jsondata----------------')
+        console.log(jsondata)
+        console.log('---------------jsondataName----------------')
+        console.log(jsondataName)
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main1'))
         // 绘制图表

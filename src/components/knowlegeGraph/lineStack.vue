@@ -12,17 +12,17 @@
 
 <!--    <el-rate v-model="value1"></el-rate>-->
   <div id="knowledge">
-    <iframe :src='imageSource' scrolling="no" style="width: 100%;height: 1000px;" frameborder="0"></iframe>
+    <iframe :src='imageSource' scrolling="no" style="width: 100%;height: 800px;" frameborder="0"></iframe>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'knowledgeGraph',
+  name: 'knowledgeGraph-reason',
   data () {
     return {
       msg: 'Welcome You, lishikai!',
-      imageSource: '../../../static/knowledgeGraph.html'
+      imageSource: '../../../static/line-stack.html'
     }
   },
   methods: {
