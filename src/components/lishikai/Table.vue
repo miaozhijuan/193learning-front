@@ -286,7 +286,6 @@ export default {
         this.tableData = this.data1
       }
     },
-    // lists.splice(index, 1)
     tagClose (index) {
       this.lists.splice(index, 1)
       this.$store.state.pageData = this.lists
