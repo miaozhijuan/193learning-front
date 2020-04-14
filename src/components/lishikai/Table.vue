@@ -56,7 +56,6 @@
 </div>
 </template>
 <script>
-// import vueLocalStorage from 'vue-localstorage'
 export default {
   name: 'table',
   data () {
@@ -185,15 +184,6 @@ export default {
           }
         }
       }
-      // checkeds.forEach(v1 => {
-      //   console.log('--------->' + v1.id)
-      //   checkdeid.forEach(v => {
-      //     if (v1.id === v.id) {
-      //       console.log('=========>' + v.id)
-      //       this.tableData.splice(index, 1)
-      //     }
-      //   })
-      // })
       this.delete_id = []
     },
     downloadExcel () {
@@ -210,7 +200,6 @@ export default {
     },
     // 导出excel
     export2Excel () {
-      console.log(4444444444)
       require.ensure([], () => {
         // eslint-disable-next-line camelcase
         const { export_json_to_excel } = require('../../excel/Export2Excel.js')
@@ -228,7 +217,6 @@ export default {
       return jsonData.map(v => filterVal.map(j => v[j]))
     },
     download: function () {
-      console.log(11111111)
       var obj = document.getElementById('download')
       var str = '类别推荐,规章推荐\n'
       for (var i = 0; i < this.tableData.length; i++) {
@@ -286,18 +274,12 @@ export default {
         this.tableData = this.data1
       }
     },
-    // lists.splice(index, 1)
     tagClose (index) {
       this.lists.splice(index, 1)
       // 解决删除问题
       this.$store.state.pageData = this.lists
       const parsed = JSON.stringify(this.lists)
       localStorage.setItem('lists', parsed)
-      // vueLocalStorage.set('pageData', this.lists)
-      // console.log('localstorage删除存入' + vueLocalStorage.get('pageData'))
-      // localStorage.setItem('pageData', this.lists)
-      // eslint-disable-next-line no-undef      这两个localstore
-      // VueLocalStorage.set()
       console.log(this.lists)
       // 进行检索和渲染
       if (this.lists.length > 0) {
@@ -386,9 +368,6 @@ export default {
         this.$store.state.pageData = this.lists
         const parsed = JSON.stringify(this.lists)
         localStorage.setItem('lists', parsed)
-        // vueLocalStorage.set('pageData', this.lists)
-        // console.log('存入localstorage' + vueLocalStorage.get('pageData'))
-        // localStorage.setItem('pageData', this.lists)
       }
       if (this.$store.state.pageData.length > 0) {
         this.lists = this.$store.state.pageData
@@ -397,10 +376,6 @@ export default {
       if (localStorage.getItem('lists')) {
         this.lists = JSON.parse(localStorage.getItem('lists'))
       }
-      // if (localStorage.getItem('pageData').length > 0) {
-      //   this.lists = localStorage.getItem('pageData')
-      // }
-      // list for 循环
       this.p = '{"query":{"bool":{"must":['
       for (var i = 0; i < this.lists.length; i++) {
         if (i === (this.lists.length - 1)) {
@@ -411,17 +386,8 @@ export default {
       }
       this.p = this.p + ']}},"collapse":{"field": "专业分类.keyword"}}'
       console.log(this.p)
-      // var p1 = JSON.parse(JSON.stringify(this.p))
-      // param 没有发送过去,中文乱码问题 {params: this.p, headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}}
       this.$axios.defaults.headers = {'Content-Type': 'application/json'}
-      // this.$axios.post('http://127.0.0.1:9200/lishikai_index007/_search', this.p).then(res => {
-      //   console.log(p1)
-      //   let demo = res.data.hits
-      //   console.log(demo)
-      //   this.pageData = demo
-      // })
       var url = this.global_request_url.requestESURL
-      // var res = await this.$axios.post('http://127.0.0.1:9200/lishikai_index000/_search', this.p) // 这里的res就是axios请求回来的结果
       var res = await this.$axios.post(url, this.p) // 这里的res就是axios请求回来的结果
       let demo = res.data.hits
       console.log(demo + typeof demo)
@@ -430,12 +396,9 @@ export default {
       this.initDataVue()
     },
     getTheKGData () {
-      // 对数据进行ltp抽取三元组this.lists = JSON.parse(localStorage.getItem('lists'))
       let param = JSON.parse(localStorage.getItem('queryReturnData'))
       console.log(param + 'paramType' + typeof param)
       var url = this.global_request_url.requestDjango
-      // this.$axios.post('http://127.0.0.1:8000/kgprocess/', param).then(resp => {
-      // var res = await this.$axios.post(url, param)
       this.$axios.post(url, param).then(resp => {
         // 处理完成之后的json数据
         let returnData = resp.data
@@ -451,42 +414,12 @@ export default {
     if (localStorage.getItem('lists')) {
       this.lists = JSON.parse(localStorage.getItem('lists'))
     }
-    // localStorage.setItem('pageData', this.lists)
-    // vueLocalStorage.set('pageData', this.lists)
-    // vueLocalStorage.set('pageData', this.lists)
-    // let test = vueLocalStorage.get('pageData')
-    // console.log('-------------------存入localstorage' + test)
-    // this.lists = localStorage.getItem('pageData')
     if (this.lists.length > 0) {
       this.searchUser()
     }
-    // this.$axios.post('http://127.0.0.1:8008/index/', this.p).then(res => {
-    //   //   console.log(p1)
-    //   //   let demo = res.data.hits
-    //   console.log(res.data)
-    // })
-    // this.p = '{"query":{"match":{"发现人":"朱贵"}}}' // 只要构建好json字符串就行了，不用管其他的，发送到哪里是elasticsearch解析,那么容易解析。
-    // this.$axios.get('http://127.0.0.1:9200/lishikai_index007/_search', this.p).then(res => {
-    //   console.log(typeof res.data)
-    //   console.log(res.data.hits.hits[0])
-    //   // this.pageData = res.data.hits.hits[0]._source.专业分类 // 中文也可以服了
-    //   this.pageData = res.data.hits.hits[0]._source
-    //   // console.log(this.pageData)
-    // })
   }
 }
 /* eslint-disable */
-// var data1 = []
-// for (var i = 0; i < 10; i++) {
-//   data1.push({
-//     id: i,
-//     name: '张三测试测试测试测试' + i,
-//     math: i * 10,
-//     chinese: {
-//       value: i * 10 + 5
-//     }
-//   })
-// }
 function initData(){
 // eslint-disable-next-line no-unused-vars
   if(typeof this.pageData == 'object'){ {
