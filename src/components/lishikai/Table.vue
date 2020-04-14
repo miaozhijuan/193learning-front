@@ -289,7 +289,6 @@ export default {
     // lists.splice(index, 1)
     tagClose (index) {
       this.lists.splice(index, 1)
-      // 解决删除问题
       this.$store.state.pageData = this.lists
       const parsed = JSON.stringify(this.lists)
       localStorage.setItem('lists', parsed)
