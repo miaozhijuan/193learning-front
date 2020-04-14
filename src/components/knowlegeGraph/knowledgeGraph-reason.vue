@@ -12,7 +12,7 @@
 
 <!--    <el-rate v-model="value1"></el-rate>-->
   <div id="knowledge">
-    <iframe :src='imageSource' scrolling="no" style="width: 100%;height: 1000px;" frameborder="0"></iframe>
+    <iframe src='./static/knowledgeGraphReason.html' scrolling="no" style="width: 100%;height: 1000px;" frameborder="0"></iframe>
   </div>
 </template>
 
@@ -21,8 +21,7 @@ export default {
   name: 'knowledgeGraph-reason',
   data () {
     return {
-      msg: 'Welcome You, lishikai!',
-      imageSource: '../../../static/knowledgeGraphReason.html'
+      msg: 'Welcome You, lishikai!'
     }
   },
   methods: {
@@ -32,8 +31,9 @@ export default {
       console.log(param + 'paramType' + typeof param)
       var url = this.global_request_url.requestDjango
       // this.$axios.post('http://127.0.0.1:8000/kgprocess/', param).then(resp => {
+      // var res = await this.$axios.post(url, param)
       this.$axios.post(url, param).then(resp => {
-      // 处理完成之后的json数据
+        // 处理完成之后的json数据
         let returnData = resp.data
         console.log('returndata=================' + returnData)
         console.log(returnData)
@@ -42,8 +42,13 @@ export default {
       })
     }
   },
-  mounted: function () {
+  // mounted: function () {
+  //   this.getTheKGData()
+  //   location.reload()
+  // },
+  router: function () {
     this.getTheKGData()
+    location.reload()
   }
 }
 </script>

@@ -1,12 +1,5 @@
 <template>
 <div id="printTest">
-<!--  <div class="crumbs">-->
-<!--    <el-breadcrumb separator="/">-->
-<!--      <el-breadcrumb-item>-->
-<!--        <i class="el-icon-lx-cascades"></i> 基础表格-->
-<!--      </el-breadcrumb-item>-->
-<!--    </el-breadcrumb>-->
-<!--  </div>-->
 <r-tabs style="margin:10px;" v-model="tabsValue">
   <r-tab-pane name="pane1" label="专业分类推荐" icon="search">
     <!-- 搜索框 -->
@@ -14,28 +7,12 @@
       <div class="margin-top-10">
         <r-input v-model.trim="newAddText" @keyup.enter.native="keyupEnter" style="width:500px"></r-input>
         <r-button @click.native="addNewTag">搜索</r-button>
-<!--        ion-ios-pricetags-outline       style="background-color: white ;border: 0;"-->
         <r-tag v-for='(list,index) in lists' v-bind:key='list.id' closeable type="primary"   @close="tagClose(index)" >
           <r-icon type="ios-pricetags-outline"></r-icon>  {{list.title}}
         </r-tag>
       </div>
-<!--      <app-toolbar>-->
-<!--        <el-button type="primary">新增</el-button>-->
-<!--        <el-button type="primary" v-hasPermission="'edit'">修改</el-button>-->
-<!--      </app-toolbar>-->
       <!--每次搜索一下记录关键词并生成对应的检索条件，点击叉号去处该标签-->
    <r-form-item  style="margin-left: 10px; position:relative;left: -430px;top: 20px;" label-width="400px">
-<!--     <r-row>-->
-<!--       <r-col>-->
-<!--<div id="username" style="text-align:center;">用户名</div>-->
-<!--       </r-col>-->
-<!--      <r-col>-->
-<!--        <r-input style="width:300px"></r-input>-->
-<!--      </r-col>-->
-<!--      <r-col offset="0">-->
-<!--        <r-button  >搜索</r-button>-->
-<!--      </r-col>-->
-<!--    </r-row>-->
 
   </r-form-item>
     </r-form>
@@ -48,17 +25,6 @@
   <r-button @click.native=" delete_all_pick()" >批量删除</r-button>
 </r-button-group>
         <el-dialog title="新增专业分类" :visible.sync="dialog.editPaw.show" :modal-append-to-body="false" custom-class="editPawDialog">
-<!--          <el-form :model="editPaw" :rules="editPawRules" ref="editPaw" label-width="100px" >-->
-<!--            <el-form-item label="旧密码" prop="oldPaw">-->
-<!--              <el-input v-model="editPaw.oldPaw" auto-complete="off"></el-input>-->
-<!--            </el-form-item>-->
-<!--            <el-form-item label="新密码" prop="newPaw">-->
-<!--              <el-input v-model="editPaw.newPaw" auto-complete="off"></el-input>-->
-<!--            </el-form-item>-->
-<!--            <el-form-item label="确认新密码" prop="confirmNewPaw">-->
-<!--              <el-input v-model="editPaw.confirmNewPaw" auto-complete="off"></el-input>-->
-<!--            </el-form-item>-->
-<!--          </el-form>-->
           <r-form  :model="formItem" :rules="ruleValidate" ref="myForm">
             <r-form-item label="类别" prop="input" >
               <el-input v-model="formItem.input" placeholder="请输入" trim> </el-input>
@@ -71,49 +37,14 @@
               <r-button style="margin-left: 8px" type="primary" @click.native="submit">提交</r-button>
             </r-form-item>
           </r-form>
-<!--          <div class="textC">-->
-<!--            <el-button type="primary" @click="editPawSubmit">保存</el-button>-->
-<!--          </div>-->
         </el-dialog>
 </div>
     <!-- table表格 -->
     <div id="idtable">
     <r-table :data="data1"  :loading="loading" ref="table" :border="true" :show-header="true" :sort-method="sort" :sort-field="sortField" :sort-dir="sortDir" @check-change="rowClick"  >
-<!--  <r-table-column width="50" type="expand" align="center">-->
-<!--    <template slot-scope="scope">-->
-<!--      <div>{{scope.data.content}}</div>-->
-<!--    </template>-->
-<!--  </r-table-column>-->
       <r-table-column width="40" type="checkbox" align="center" ></r-table-column>
       <r-table-column width="40" type="index"></r-table-column>
-<!--  <r-table-column title="推荐指数" field="name" align="center" width="160" :ellipsis="true">-->
-<!--&lt;!&ndash;    <template slot-scope="scope">&ndash;&gt;-->
-<!--&lt;!&ndash;      <r-tooltip placement="left-end">&ndash;&gt;-->
-<!--&lt;!&ndash;        <span>{{scope.data.name}}</span>&ndash;&gt;-->
-<!--&lt;!&ndash;        <div slot="content">{{scope.data.chinese.value}}</div>&ndash;&gt;-->
-<!--&lt;!&ndash;      </r-tooltip>&ndash;&gt;-->
-<!--&lt;!&ndash;    </template>&ndash;&gt;-->
-<!--  </r-table-column>-->
   <r-table-column title="类别推荐" field="math" width="800" align="center"  v-if="test"></r-table-column>
-<!--    <r-table-column title="规章推荐" field="chinese.value"  align="left" :ellipsis="true" >-->
-<!--    <template slot-scope="scope">-->
-<!--      <r-tooltip placement="left-start">-->
-<!--        <span>{{scope.data.chinese.value}}</span>-->
-<!--        <div slot="content">{{scope.data.chinese.value}}</div>-->
-<!--      </r-tooltip>-->
-<!--    </template>-->
-<!--  </r-table-column>-->
-<!--      <template slot-scope="scope">-->
-<!--        <r-tooltip>-->
-<!--          <span>{{scope.data.chinese.value}}</span>-->
-<!--          <div slot="content">{{scope.data.chinese.value}}</div>-->
-<!--        </r-tooltip>-->
-<!--      </template>-->
-<!--  <r-table-column title="查看详情" align="center" width="140" v-if="test">-->
-<!--    <template slot-scope="scope">-->
-<!--      <r-button type="primary" size="small" @click.native="_alert(scope.data.chinese.value , $event)" v-if="test">查看</r-button>-->
-<!--    </template>-->
-<!--  </r-table-column>-->
 </r-table>
     </div>
 <!-- 页码 -->
@@ -122,14 +53,6 @@
 </div>
     </r-tab-pane>
 </r-tabs>
-<!--  <r-card hover="true" style="margin: 200px; width: 800px;">-->
-<!--    <p slot="title">标准卡片</p>-->
-<!--&lt;!&ndash;    <a href="#" slot="extra">&ndash;&gt;-->
-<!--&lt;!&ndash;      <r-icon type="ios-loop-strong"></r-icon>&ndash;&gt;-->
-<!--&lt;!&ndash;      <span>换一换</span>&ndash;&gt;-->
-<!--&lt;!&ndash;    </a>&ndash;&gt;-->
-<!--    <p>卡片测试</p>-->
-<!--  </r-card>-->
 </div>
 </template>
 <script>
@@ -337,6 +260,8 @@ export default {
       console.log('typeof pageData' + typeof this.pageData)
       let parsed = JSON.stringify(this.pageData)
       localStorage.setItem('queryReturnData', parsed)
+      this.getTheKGData()// 进行异步的抽取三元组
+      // 同时装入隐患原因类别关联ltp模型
       this.total = this.pageData.total.value
       for (var i = 0; i < this.pageData.total.value; i++) {
         let value = this.pageData.hits[i]._source.事故隐患内容
@@ -503,6 +428,22 @@ export default {
       this.pageData = demo
       this.data1 = []
       this.initDataVue()
+    },
+    getTheKGData () {
+      // 对数据进行ltp抽取三元组this.lists = JSON.parse(localStorage.getItem('lists'))
+      let param = JSON.parse(localStorage.getItem('queryReturnData'))
+      console.log(param + 'paramType' + typeof param)
+      var url = this.global_request_url.requestDjango
+      // this.$axios.post('http://127.0.0.1:8000/kgprocess/', param).then(resp => {
+      // var res = await this.$axios.post(url, param)
+      this.$axios.post(url, param).then(resp => {
+        // 处理完成之后的json数据
+        let returnData = resp.data
+        console.log('returndata=================' + returnData)
+        console.log(returnData)
+        returnData = JSON.stringify(returnData)
+        localStorage.setItem('knowledgeData', returnData)
+      })
     }
   },
   created: function () {

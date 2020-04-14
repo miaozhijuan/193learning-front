@@ -52,7 +52,7 @@
   <r-form-item label="发现日期">
     <div style="display:flex; align-items:baseline">
       <r-form-item prop="date">
-        <r-datepicker v-model="formItem.发现日期" clearable></r-datepicker>
+        <r-datepicker v-model="formItem.发现日期" ></r-datepicker>
       </r-form-item><span style="flex-basis:50px;text-align:center">-</span>
 <!--      <r-form-item prop="time">-->
 <!--        <r-timepicker v-model="formItem.time" clearable></r-timepicker>-->
@@ -246,23 +246,23 @@ export default {
   },
   methods: {
     required (value, callback) {
-      if (value instanceof Array) {
-        if (value.length > 0) {
-          // eslint-disable-next-line standard/no-callback-literal
-          callback(true)
-        } else {
-          // eslint-disable-next-line standard/no-callback-literal
-          callback(false)
-        }
-      } else {
-        if (value.length > 0) {
-          // eslint-disable-next-line standard/no-callback-literal
-          callback(true)
-        } else {
-          // eslint-disable-next-line standard/no-callback-literal
-          callback(false)
-        }
-      }
+      // if (value instanceof Array) {
+      //   if (value.length > 0) {
+      //     // eslint-disable-next-line standard/no-callback-literal
+      //     callback(true)
+      //   } else {
+      //     // eslint-disable-next-line standard/no-callback-literal
+      //     callback(false)
+      //   }
+      // } else {
+      //   if (value.length > 0) {
+      //     // eslint-disable-next-line standard/no-callback-literal
+      //     callback(true)
+      //   } else {
+      //     // eslint-disable-next-line standard/no-callback-literal
+      //     callback(false)
+      //   }
+      // }
     },
 
     addTel () {
@@ -284,12 +284,31 @@ export default {
       // todo 提交到后台后台直接处理json数据
       var res = await this.$axios.post('http://127.0.0.1:8000/processHandleInput/', this.formItem)
       console.log(res)
+      // 设置清空
+      this.formItem.隐患标题 = ''
+      this.formItem.隐患来源 = ''
+      this.formItem.隐患原因 = ''
+      this.formItem.专业分类 = ''
+      this.formItem.发现人 = ''
+      this.formItem.事故隐患内容 = ''
+      this.formItem.可能导致后果 = ''
+      this.formItem.防控措施 = ''
+      this.formItem.发现日期 = ''
+      let parsed = JSON.stringify(this.formItem)
+      console.log(parsed)
+      localStorage.setItem('saveData', parsed)
+      this.$message('录入完成')
     },
 
-    reset () {
-      this.$refs.myForm.reset()
+    reset () { // 点击保存放到localstorage中，返回的时候直接从中加载
+      // this.$refs.myForm.reset()
       // 这里竟然可以直接用json进行表单赋值操作，太爽了吧 todo vue很强大这里直接赋值给vuex通过vuex管理保存数据
-      this.formItem = {'隐患标题': '1111111', '隐患来源': '11111111', '隐患原因': '1111111', '专业分类': '1111111111', '发现人': '111111111', '事故隐患内容': '111111111', '可能导致后果': '111111111111', '防控措施': '111111111', '发现日期': '2019-12-04'}
+      // this.formItem = {'隐患标题': '1111111', '隐患来源': '11111111', '隐患原因': '1111111', '专业分类': '1111111111', '发现人': '111111111', '事故隐患内容': '111111111', '可能导致后果': '111111111111', '防控措施': '111111111', '发现日期': '2019-12-04'}
+      console.log(this.formItem)
+      let parsed = JSON.stringify(this.formItem)
+      console.log(parsed)
+      localStorage.setItem('saveData', parsed)
+      this.$message('保存成功')
     },
 
     onSuccess (res, file) {
@@ -298,6 +317,25 @@ export default {
         url: res.id
       })
     }
+  },
+  mounted: function () {
+    var form = JSON.parse(localStorage.getItem('saveData'))
+    // console.log('7777777777777')
+    console.log(form.toString().length)
+    if (form.toString().length > 0) {
+      console.log('<<-----============------>>')
+      // this.formItem.隐患标题 = form['隐患标题']
+      // this.formItem.隐患来源 = form['隐患来源']
+      // this.formItem.隐患原因 = form['隐患原因']
+      // this.formItem.专业分类 = form['专业分类']
+      // this.formItem.发现人 = form['发现人']
+      // this.formItem.事故隐患内容 = form['事故隐患内容']
+      // this.formItem.可能导致后果 = form['可能导致后果']
+      // this.formItem.防控措施 = form['防控措施']
+      // this.formItem.发现日期 = form['发现日期']
+      this.formItem = form
+    }
+    // console.log(form['隐患标题'])
   }
 }
 </script>

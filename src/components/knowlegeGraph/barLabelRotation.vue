@@ -12,7 +12,7 @@
 
 <!--    <el-rate v-model="value1"></el-rate>-->
   <div id="knowledge">
-    <iframe :src='imageSource' scrolling="no" style="width: 100%;height: 800px;" frameborder="0"></iframe>
+    <iframe src = './static/bar-label-rotation.html' scrolling="no" style="width: 100%;height: 800px;" frameborder="0"></iframe>
   </div>
 </template>
 
@@ -22,7 +22,8 @@ export default {
   data () {
     return {
       msg: 'Welcome You, lishikai!',
-      imageSource: '../../../static/bar-label-rotation.html'
+      // imageSource: '../../../static/bar-label-rotation.html'
+      imageWebpack: './static/bar-label-rotation.html'
     }
   },
   methods: {
@@ -43,7 +44,7 @@ export default {
     }
   },
   mounted: function () {
-    this.getTheKGData()
+    // this.getTheKGData()
   }
 }
 </script>

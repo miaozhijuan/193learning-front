@@ -3,7 +3,7 @@
     <r-card>
       <r-tabs v-model="common.tab">
         <r-tab-pane name="1" label="文件导入">
-          <r-upload list-type="file" value="true" v-model="images" action="http://127.0.0.1:8000/upload_file/" :on-success="onSuccess" :on-error="onError" :on-remove="onRemove" :multiple="true" :on-preview="onPreview" :before-upload="beforeUpload" :limit="5">
+          <r-upload list-type="file" value="true" v-model="images" :action="actionUrl" :on-success="onSuccess" :on-error="onError" :on-remove="onRemove" :multiple="true" :on-preview="onPreview" :before-upload="beforeUpload" :limit="5">
             <r-button icon="ios-cloud-upload-outline">上传文件</r-button>
           </r-upload>
           <r-button type="primary"  :loading = "loading"  v-if="test" @click.native="sentJsonToElastic()">处理已上传文件</r-button>
@@ -30,7 +30,8 @@ export default {
         tab2: ''
       },
       images: [
-      ]
+      ],
+      actionUrl: this.global_request_url.fileuploadESURL
     }
   },
   components: {FileUpload},

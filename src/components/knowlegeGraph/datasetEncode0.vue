@@ -12,7 +12,7 @@
 
 <!--    <el-rate v-model="value1"></el-rate>-->
   <div id="knowledge">
-    <iframe :src='imageSource' scrolling="no" style="margin-left:-100px;width: 1500px;height: 800px;" frameborder="0"></iframe>
+    <iframe src='./static/dataset-encode0.html' scrolling="no" style="margin-left:-100px;width: 1500px;height: 800px;" frameborder="0"></iframe>
   </div>
 </template>
 
@@ -21,8 +21,7 @@ export default {
   name: 'knowledgeGraph-reason',
   data () {
     return {
-      msg: 'Welcome You, lishikai!',
-      imageSource: '../../../static/dataset-encode0.html'
+      msg: 'Welcome You, lishikai!'
     }
   },
   methods: {
@@ -43,7 +42,7 @@ export default {
     }
   },
   mounted: function () {
-    this.getTheKGData()
+    // this.getTheKGData()
   }
 }
 </script>

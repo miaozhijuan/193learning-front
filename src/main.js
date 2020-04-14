@@ -53,7 +53,7 @@ Vue.use(vueLocalStorage)
 Vue.use(uploader)
 // todo放入预定义用户支持对用户的增删改查
 let users = []
-users.push(JSON.parse('{"username":"admin","password":"123"}'))
+users.push(JSON.parse('{"username":"admin","password":"1wer56dsa78"}'))
 let parsed = JSON.stringify(users)
 localStorage.setItem('users', parsed)
 console.log(JSON.parse(localStorage.getItem('users'))[0].username)

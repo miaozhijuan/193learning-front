@@ -8,20 +8,63 @@
 <!--  localstorage 传值问题解决 由vue做处理传值、localstorage数值接收、然后统一渲染过程，所有的数据更新等都在localstorage中进行-->
 console.log('------------知识图谱页面')
 test = localStorage.getItem("knowledgeData")
-// test = JSON.parse(test)
+test = JSON.parse(test)
 // test = eval(test)
 // test = test.replace("(","")
 // test = test.replace(")","");
-test = eval(test)
-console.log("----------------"+test)
+// test = eval(test)
+console.log("----------------+test")
+// linkspro = []
+// for (item of test) {
+//   for (item1 of item){
+//     for (item2 of item1){
+//       console.log(item2['subject'])
+//       console.log(item2['verb'])
+//       console.log(item2['object'])
+//      // var sourceItem = {source: '隐患检索实体', target: item2['object'], 'rela': item2['subject'], type: 'resolved'}
+//      var sourceItem = {source: '隐患检索实体', target: item2['subject'], 'rela': item2['object'], type: 'resolved'}
+//      linkspro.push(sourceItem)
+//     }
+//   }
+// }
+linkspro=[]
+for (itemt of test) {
+  if (itemt.length>1) {
+    for (item of itemt) {
+      for(item2 of item['实体映射']){
+        //       console.log(item2['subject'])
+        //       console.log(item2['verb'])
+        //       console.log(item2['object'])
+        var sourceItem = {source: item['隐患原因'], target: item2['subject'], 'rela': item2['object'], type: 'resolved'}
+        linkspro.push(sourceItem)
+      }
+    }
+  }else{
+    for (item of itemt) {
+      for (item1 of item){
+        //     console.log(item1['隐患原因'])
+        for(item2 of item1['实体映射']){
+          //       console.log(item2['subject'])
+          //       console.log(item2['verb'])
+          //       console.log(item2['object'])
+          var sourceItem = {source: item1['隐患原因'], target: item2['subject'], 'rela': item2['object'], type: 'resolved'}
+          linkspro.push(sourceItem)
+        }
+      }
+    }
+  }
+}
+console.log(test)
 var links = 
 [
 {source: '隐患', target: '人身安全隐患', 'rela': '原因', type: 'resolved'},
-{source: '隐患', target: '电力安全事故隐患', 'rela': '原因', type: 'resolved'},
-{source: '隐患', target: '设备设施事故隐患', 'rela': '原因', type: 'resolved'},
-{source: '隐患', target: '大坝安全隐患', 'rela': '原因', type: 'resolved'},
+{source: '隐患', target: '电力安全隐患', 'rela': '原因', type: 'resolved '},
+{source: '隐患', target: '设备设施隐患', 'rela': '原因', type: 'resolved '},
+{source: '隐患', target: '大坝安全隐患', 'rela': '原因', type: 'resolved '},
 {source: '隐患', target: '安全管理隐患', 'rela': '原因', type: 'resolved'},
 {source: '隐患', target: '其他事故隐患', 'rela': '原因', type: 'resolved'},
+
+// {source: '隐患', target: '隐患检索实体', 'rela': '相关', type: 'resolved'},
   // {source: '针对', target: '其他事故隐患', 'rela': '原因', type: 'resolved'},
 // {source: '隐患', target: '消防', 'rela': '原因', type: 'resolved'},
 // {source: '隐患', target: '后勤', 'rela': '原因', type: 'resolved'},
@@ -31,13 +74,18 @@ var links =
 // {source: '隐患', target: '《论数字计算在决断难题中的应用》', 'rela': '专业分类', type: 'resolved'},
 // {source: '隐患', target: '《机器能思考吗？》', 'rela': '专业分类', type: 'resolved'},
 ];
+for(var i in linkspro){
+  links.push(linkspro[i]);
+}
+console.log(links)
 var nodes = {};
 links.forEach(function(link)
 {
   link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
   link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
 });
-var width = 800, height = 700;
+// var width = 800, height = 700;
+var width = 1200, height = 1000;
 var force = d3.layout.force()
     .nodes(d3.values(nodes))
     .links(links)
