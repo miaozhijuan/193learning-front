@@ -282,7 +282,7 @@ export default {
         console.log(_, item)
       })
       // todo 提交到后台后台直接处理json数据
-      var res = await this.$axios.post('http://127.0.0.1:8000/processHandleInput/', this.formItem)
+      var res = await this.$axios.post('http://39.106.226.131:8000/processHandleInput/', this.formItem)
       console.log(res)
       // 设置清空
       this.formItem.隐患标题 = ''

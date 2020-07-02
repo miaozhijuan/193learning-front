@@ -45,7 +45,7 @@ export default {
     async sentJsonToElastic () {
       this.loading = true
       console.log('发送json到elasticsearch')
-      var res = await this.$axios.post('http://127.0.0.1:8000/sent_json_to_elasticsearch/')
+      var res = await this.$axios.post('http://39.106.226.131:8000/sent_json_to_elasticsearch/')
       console.log(res)
       this.loading = false
       this.$message('处理完成', 'success')
