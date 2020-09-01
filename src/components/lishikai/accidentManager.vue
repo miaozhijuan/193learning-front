@@ -9,120 +9,302 @@
   <!--&lt;!&ndash;      <span>换一换</span>&ndash;&gt;-->
   <!--&lt;!&ndash;    </a>&ndash;&gt;-->
   <r-form label-width="100" :model="formItem" :rules="ruleValidate" ref="myForm">
-  <r-form-item label="隐患标题" prop="input" required>
+
+    <r-form-item class="yhhc" label="隐患简题" prop="input" required>
+      <r-input v-model="formItem.隐患标题" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+
+  <r-form-item class="yhjt" label="隐患简题" prop="input" required>
     <r-input v-model="formItem.隐患标题" placeholder="请输入" trim> </r-input>
   </r-form-item>
-  <r-form-item label="隐患来源" prop="input" required>
-    <r-input v-model="formItem.隐患来源" placeholder="请输入" trim> </r-input>
+  <r-form-item class="yhly" label="隐患来源" prop="select" required>
+
+    <r-select v-model="formItem.隐患来源" clearable>
+      <r-select-option label="条例专项" value="条例专项"></r-select-option>
+      <r-select-option label="日常巡视" value="日常巡视"></r-select-option>
+      <r-select-option label="检修预试" value="检修预试"></r-select-option>
+      <r-select-option label="电网专项" value="电网专项"></r-select-option>
+      <r-select-option label="安全性评价" value="安全性评价"></r-select-option>
+      <r-select-option label="安全检查" value="安全检查"></r-select-option>
+      <r-select-option label="专项监督" value="专项监督"></r-select-option>
+      <r-select-option label="事故分析" value="事故分析"></r-select-option>
+      <r-select-option label="电网方式分析" value="事故分析"></r-select-option>
+      <r-select-option label="防误闭锁" value="防误闭锁"></r-select-option>
+      <r-select-option label="电网隐患" value="电网隐患"></r-select-option>
+      <r-select-option label="跨越施工" value="跨越施工"></r-select-option>
+      <r-select-option label="电气火灾" value="电气火灾"></r-select-option>
+
+    </r-select>
+
+
   </r-form-item>
-  <r-form-item label="隐患原因" prop="input" required>
-    <r-input v-model="formItem.隐患原因" placeholder="请输入" trim> </r-input>
+  <r-form-item label="隐患原因" prop="select" required>
+    <r-select v-model="formItem.隐患原因" clearable>
+      <r-select-option label="人身安全隐患" value="人身安全隐患"></r-select-option>
+      <r-select-option label="电力安全隐患" value="电力安全隐患"></r-select-option>
+      <r-select-option label="设备设施隐患" value="设备设施隐患"></r-select-option>
+      <r-select-option label="大坝安全隐患" value="大坝安全隐患"></r-select-option>
+      <r-select-option label="安全管理隐患" value="安全管理隐患"></r-select-option>
+      <r-select-option label="其他事故隐患" value="其他事故隐患"></r-select-option>
+
+
+    </r-select>
   </r-form-item>
-  <r-form-item label="专业分类" prop="input" required>
-    <r-input v-model="formItem.专业分类" placeholder="请输入" trim> </r-input>
+
+<!--1-->
+    <r-form-item class="yhbh" label="隐患编号" prop="input" required>
+      <r-input v-model="formItem.隐患编号" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+
+    <r-form-item class="yhszdw" label="隐患所在单位" prop="input" required>
+      <r-input v-model="formItem.隐患所在单位" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+
+<!---->
+
+
+
+  <r-form-item class="zyfl" label="专业分类" prop="select" required>
+
+    <r-select v-model="formItem.专业分类" clearable>
+      <r-select-option label="变电" value="变电"></r-select-option>
+      <r-select-option label="输电" value="输电"></r-select-option>
+      <r-select-option label="发电" value="发电"></r-select-option>
+      <r-select-option label="配电" value="配电"></r-select-option>
+      <r-select-option label="信息" value="信息"></r-select-option>
+      <r-select-option label="电网规划" value="电网规划"></r-select-option>
+      <r-select-option label="交通" value="交通"></r-select-option>
+      <r-select-option label="消防" value="消防"></r-select-option>
+      <r-select-option label="煤矿" value="煤矿"></r-select-option>
+      <r-select-option label="其他" value="其他"></r-select-option>
+      <r-select-option label="电力建设" value="电力建设"></r-select-option>
+      <r-select-option label="环境保护" value="环境保护"></r-select-option>
+      <r-select-option label="装备制造" value="装备制造"></r-select-option>
+      <r-select-option label="安全保卫" value="安全保卫"></r-select-option>
+      <r-select-option label="后勤" value="后勤"></r-select-option>
+      <r-select-option label="调度及二次系统" value="调度及二次系统"></r-select-option>
+
+
+    </r-select>
+
+
   </r-form-item>
+
+
+    <!--  1  -->
+    <r-form-item class="xxfl" label="详细分类" prop="input" required>
+      <r-input v-model="formItem.详细分类" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <!--    -->
+
 <!--  <r-form-item label="详细分类" prop="input" >-->
 <!--    <r-input v-model="formItem.input" placeholder="请输入" trim> </r-input>-->
 <!--  </r-form-item>-->
-  <r-form-item label="发现人" prop="input" required>
+  <r-form-item class="fxr" label="发现人" prop="input" required>
     <r-input v-model="formItem.发现人" placeholder="请输入" trim> </r-input>
   </r-form-item>
-<!--  <r-form-item label="发现人单位" prop="input" >-->
+
+<!--    1-->
+    <r-form-item class="fxrdw" label="发现人单位" prop="input" required>
+      <r-input v-model="formItem.发现人单位" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+<!--    -->
+
+    <!--    1-->
+    <r-form-item class="fxrq" label="发现日期" prop="date" required>
+
+        <r-datepicker v-model="formItem.发现日期" clearable></r-datepicker>
+
+    </r-form-item>
+    <!--    -->
+
+
+
+    <!--  <r-form-item label="发现人单位" prop="input" >-->
 <!--    <r-input v-model="formItem.input" placeholder="请输入" trim> </r-input>-->
 <!--  </r-form-item>-->
 <!--  <r-form-item label="发现日期" prop="input" >-->
 <!--    <r-input v-model="formItem.input" placeholder="请输入" trim> </r-input>-->
 <!--  </r-form-item>-->
-  <r-form-item label="事故隐患内容" prop="input" required>
-    <r-input v-model="formItem.事故隐患内容" placeholder="请输入" trim> </r-input>
+  <r-form-item class="sgyhnr" label="事故隐患内容" prop="input" required>
+    <r-input v-model="formItem.事故隐患内容" type="textarea" placeholder="请输入" trim> </r-input>
   </r-form-item>
-  <r-form-item label="可能导致后果" prop="input" >
+  <r-form-item class="kndzhg" label="可能导致后果" prop="input" >
     <r-input v-model="formItem.可能导致后果" placeholder="请输入" trim> </r-input>
   </r-form-item>
-  <r-form-item label="防控措施" prop="input" >
-    <r-input v-model="formItem.防控措施" placeholder="请输入" trim required> </r-input>
-  </r-form-item>
-<!--  <r-form-item label="隐患类别" prop="select">-->
-<!--    <r-select v-model="formItem.select" clearable>-->
-<!--      <r-select-option label="北京市" value="0"></r-select-option>-->
-<!--      <r-select-option label="上海市" value="1"></r-select-option>-->
-<!--      <r-select-option label="深圳市" value="2"></r-select-option>-->
-<!--    </r-select>-->
-<!--  </r-form-item>-->
-  <r-form-item label="发现日期">
-    <div style="display:flex; align-items:baseline">
-      <r-form-item prop="date">
-        <r-datepicker v-model="formItem.发现日期" ></r-datepicker>
-      </r-form-item><span style="flex-basis:50px;text-align:center">-</span>
-<!--      <r-form-item prop="time">-->
-<!--        <r-timepicker v-model="formItem.time" clearable></r-timepicker>-->
-<!--      </r-form-item>-->
-    </div>
-  </r-form-item>
-<!--  <r-form-item label="单选框" prop="radio">-->
-<!--    <r-radio-group v-model="formItem.radio">-->
-<!--      <r-radio label="男" value="male"></r-radio>-->
-<!--      <r-radio label="女" value="remale"></r-radio>-->
-<!--    </r-radio-group>-->
-<!--  </r-form-item>-->
-<!--  <r-form-item label="多选框" prop="checkbox">-->
-<!--    <r-checkbox-group v-model="formItem.checkbox">-->
-<!--      <r-checkbox label="吃饭" value="吃饭"></r-checkbox>-->
-<!--      <r-checkbox label="睡觉" value="睡觉"></r-checkbox>-->
-<!--      <r-checkbox label="跑步" value="跑步"></r-checkbox>-->
-<!--      <r-checkbox label="看电影" value="看电影"></r-checkbox>-->
-<!--    </r-checkbox-group>-->
-<!--  </r-form-item>-->
-<!--  <r-form-item label="文本域">-->
-<!--    <r-input v-model="formItem.textarea" type="textarea"></r-input>-->
-<!--  </r-form-item>-->
-<!--  <r-form-item label="异步验证" prop="ajaxValue" required>-->
-<!--    <r-input v-model="formItem.ajaxValue" placeholder="请输入ajax" trim></r-input>-->
-<!--  </r-form-item>-->
-<!--  <r-form-item required v-for="(item, index) in formItem.tels.items" :key="index" :label="'电话' + (index + 1)"-->
-<!--               :prop="'tels.items[' + index + '].value'" :rules="[{validate: required, msg:'不能为空'}]">-->
-<!--    <r-row>-->
-<!--      <r-col>-->
-<!--        <r-input v-model="item.value"></r-input>-->
-<!--      </r-col>-->
-<!--      <r-col offset="1">-->
-<!--        <r-button type="danger" size="small" @click.native="delTel(item)">删除</r-button>-->
-<!--      </r-col>-->
-<!--    </r-row>-->
-<!--  </r-form-item>-->
-<!--  <r-form-item style="margin-left: 100px;">-->
-<!--    <r-button type="primary" @click.native="addTel">添加电话</r-button>-->
-<!--  </r-form-item>-->
-<!--  <r-form-item prop="images" required label="上传图片">-->
-<!--    <r-upload v-model="formItem.images" action="//jsonplaceholder.typicode.com/posts/" :on-success="onSuccess" list-type="image">-->
-<!--      <r-button icon="ios-cloud-upload-outline">上传文件</r-button>-->
-<!--    </r-upload>-->
-<!--  </r-form-item>-->
+
+<!--    1-->
+    <r-form-item class="gsznbm" label="归属职能部门" prop="select" >
+
+      <r-select v-model="formItem.归属职能部门" clearable>
+        <r-select-option label="发展策划" value="发展策划"></r-select-option>
+        <r-select-option label="运维检修" value="运维检修"></r-select-option>
+        <r-select-option label="调度" value="调度"></r-select-option>
+        <r-select-option label="营销" value="营销"></r-select-option>
+        <r-select-option label="农电" value="农电"></r-select-option>
+        <r-select-option label="基建" value="基建"></r-select-option>
+        <r-select-option label="交流建设" value="交流建设"></r-select-option>
+        <r-select-option label="直流建设" value="直流建设"></r-select-option>
+        <r-select-option label="信息通信" value="信息通信"></r-select-option>
+        <r-select-option label="产业" value="产业"></r-select-option>
+        <r-select-option label="人力资源" value="人力资源"></r-select-option>
+        <r-select-option label="保卫" value="保卫"></r-select-option>
+        <r-select-option label="后勤保障部" value="后勤保障部"></r-select-option>
+
+
+      </r-select>
+
+    </r-form-item>
+<!--    -->
+    <!--    1-->
+    <r-form-item class="ypgdj" label="预评估等级" prop="select" >
+
+      <r-select v-model="formItem.预评估等级" clearable>
+        <r-select-option label="一般隐患" value="一般隐患"></r-select-option>
+        <r-select-option label="重大隐患" value="重大隐患"></r-select-option>
+        <r-select-option label="安全事件隐患" value="安全事件隐患"></r-select-option>
+
+
+      </r-select>
+
+    </r-form-item>
+    <r-form-item class="ypgfzrqm" label="预评估负责人签名" prop="input" >
+      <r-input v-model="formItem.预评估负责人签名" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="ypgfzrqmrq" label="预评估负责人签名日期" prop="date" >
+
+      <r-datepicker v-model="formItem.预评估负责人签名日期" clearable></r-datepicker>
+    </r-form-item>
+    <r-form-item class="ypgldshqm" label="预评估领导审核签名" prop="input" >
+      <r-input v-model="formItem.预评估领导审核签名" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="ypgldshqmrq" label="预评估领导审核签名日期" prop="date" >
+
+      <r-datepicker v-model="formItem.预评估领导审核签名日期" clearable></r-datepicker>
+    </r-form-item>
+
+    <r-form-item class="pgdj" label="评估等级" prop="select" >
+
+      <r-select v-model="formItem.评估等级" clearable>
+        <r-select-option label="一般隐患" value="一般隐患"></r-select-option>
+        <r-select-option label="重大隐患" value="重大隐患"></r-select-option>
+        <r-select-option label="安全事件隐患" value="安全事件隐患"></r-select-option>
+
+      </r-select>
+
+    </r-form-item>
+
+    <r-form-item class="pgfzrqm" label="评估负责人签名" prop="input" >
+      <r-input v-model="formItem.评估负责人签名" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="pgfzrqmrq" label="评估负责人签名日期" prop="date" >
+
+      <r-datepicker v-model="formItem.评估负责人签名日期" clearable></r-datepicker>
+
+    </r-form-item>
+
+    <r-form-item class="pgldshqm" label="评估领导审核签名" prop="input" >
+      <r-input v-model="formItem.评估负责人签名" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="pgldshqmrq" label="评估领导审核签名日期" prop="date" >
+
+      <r-datepicker v-model="formItem.评估领导审核签名日期" clearable></r-datepicker>
+    </r-form-item>
+    <!--    -->
+<!--1-->
+    <r-form-item class="zlzrdw" label="治理责任单位" prop="input" >
+      <r-input v-model="formItem.治理责任单位" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="zlzrr" label="治理责任人" prop="input" >
+      <r-input v-model="formItem.治理责任人" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="zlqx" label="治理期限" prop="date" >
+
+      <r-datepicker v-model="formItem.治理期限" clearable></r-datepicker>
+    </r-form-item>
+    <r-form-item class="sfjhxm" label="是否计划项目" prop="select" >
+
+      <r-select v-model="formItem.是否计划项目" clearable>
+        <r-select-option label="是" value="是"></r-select-option>
+        <r-select-option label="否" value="否"></r-select-option>
+
+      </r-select>
+    </r-form-item>
+    <r-form-item class="sfwcjhwba" label="是否完成计划外备案" prop="select" >
+
+      <r-select v-model="formItem.是否完成计划外备案" clearable>
+        <r-select-option label="是" value="是"></r-select-option>
+        <r-select-option label="否" value="否"></r-select-option>
+
+      </r-select>
+
+    </r-form-item>
+    <r-form-item class="jhbh" label="计划编号" prop="input" >
+      <r-input v-model="formItem.计划编号" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="zlfa" label="治理方案" prop="input" >
+      <r-input v-model="formItem.治理方案" type="textarea" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="fkcs" label="防控措施" prop="input" >
+      <r-input v-model="formItem.防控措施" type="textarea" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="zlwcqk" label="治理完成情况" prop="input" >
+      <r-input v-model="formItem.治理完成情况" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+
+    <r-form-item class="yhzljhzj" label="隐患治理计划资金(万元)" prop="input" >
+      <r-input v-model="formItem.隐患治理计划资金" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="ljlsyhzlzj" label="累计落实隐患治理资金(万元)" prop="input" >
+      <r-input v-model="formItem.累计落实隐患治理资金" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+<!--    -->
+
+<!--    1-->
+    <r-form-item class="yssqdw" label="验收申请单位" prop="input" >
+      <r-input v-model="formItem.验收申请单位" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="fzr" label="负责人" prop="input" >
+      <r-input v-model="formItem.负责人" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="qzrq" label="签字日期" prop="date" >
+
+      <r-datepicker v-model="formItem.签字日期" clearable></r-datepicker>
+
+    </r-form-item>
+    <r-form-item class="yszzdw" label="验收组织单位" prop="input" >
+      <r-input v-model="formItem.验收组织单位" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="ysyj" label="验收意见" prop="input" >
+      <r-input v-model="formItem.验收意见" type="textarea" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="jl" label="结论" prop="input" >
+      <r-input v-model="formItem.结论" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="sfxc" label="是否消除" prop="select" >
+
+      <r-select v-model="formItem.是否消除" clearable>
+        <r-select-option label="是" value="是"></r-select-option>
+        <r-select-option label="否" value="否"></r-select-option>
+
+      </r-select>
+
+    </r-form-item>
+    <r-form-item class="yszz" label="验收组长" prop="input" >
+      <r-input v-model="formItem.验收组长" placeholder="请输入" trim> </r-input>
+    </r-form-item>
+    <r-form-item class="ysrq" label="验收日期" prop="date" >
+
+      <r-datepicker v-model="formItem.验收日期" clearable></r-datepicker>
+
+    </r-form-item>
+
   <r-form-item style="margin-left: 100px;">
     <r-button @click.native="reset">保存</r-button>
     <r-button style="margin-left: 8px" type="primary" @click.native="submit">提交</r-button>
   </r-form-item>
 </r-form>
     </r-card>
-<!--    <r-card hover="true" style="margin: 200px; width: 800px;">-->
-<!--      <p slot="title">导入提交</p>-->
-<!--    </r-card>-->
-<!--    <div id="upload" >-->
-<!--  <r-form label-width="100" :model="formItem" :rules="ruleValidate" ref="myForm">-->
-<!--    <r-form-item>-->
-<!--        <r-form-item prop="images" required label="上传图片">-->
-<!--          <r-upload v-model="formItem.images" action="//jsonplaceholder.typicode.com/posts/" :on-success="onSuccess" list-type="image">-->
-<!--            <r-button icon="ios-cloud-upload-outline">上传文件</r-button>-->
-<!--          </r-upload>-->
-<!--        </r-form-item>-->
-<!--      <r-form-item style="margin-left: 100px;">-->
-<!--        <r-button @click.native="reset">保存</r-button>-->
-<!--        <r-button style="margin-left: 8px" type="primary" @click.native="submit">提交</r-button>-->
-<!--      </r-form-item>-->
-<!--    </r-form-item>-->
-<!--  </r-form>-->
-
-<!--    </div>-->
         </r-tab-pane>
       </r-tabs>
     </r-card>
@@ -148,7 +330,45 @@ export default {
         事故隐患内容: '',
         可能导致后果: '',
         防控措施: '',
-        发现日期: ''
+        隐患编号:'',
+        //---------------1
+        隐患所在单位: '',
+        详细分类: '',
+        发现人单位: '',
+        发现日期: '',
+        归属职能部门: '',
+        预评估负责人签名: '',
+        预评估负责人签名日期: '',
+        预评估领导审核签名: '',
+        预评估领导审核签名日期: '',
+        //-------
+        预评估等级: '',
+        评估等级: '',
+        评估领导审核签名日期:'',
+
+
+        评估负责人签名: '',
+        评估负责人签名日期: '',
+        治理责任单位: '',
+        治理责任人: '',
+        治理期限: '',
+        是否计划项目: '',
+        是否完成计划外备案: '',
+        计划编号: '',
+        治理方案: '',
+        治理完成情况: '',
+        隐患治理计划资金: '',
+        累计落实隐患治理资金: '',
+        验收申请单位: '',
+        负责人: '',
+        签字日期: '',
+        验收组织单位: '',
+        验收意见: '',
+        结论: '',
+        是否消除: '',
+        验收组长: '',
+        验收日期: ''
+
         // input: '',
         // select: '',
         // radio: '',
@@ -370,4 +590,208 @@ export default {
     top:-60px;
     left: 10px;
   }
+
+  .r-card {
+    width: 1400px!important;
+  }
+  .yhly {
+
+
+    float: left;
+  }
+  .yhjt {
+    float: left;
+
+  }
+  .r-form-label-right {
+    width: 1200px;
+
+  }
+  .r-form {
+    margin-left: 80px;
+    height: 800px!important;
+    overflow-y: scroll;
+  }
+  .yhbh{
+    float: left;
+  }
+  .yhszdw{
+    float: left;
+
+  }
+  .zyfl{float: left;}
+
+  .fxr{
+    float: left;
+    margin-left: -584px;
+
+  }
+  .fxrdw{float: left;
+    margin-left: -292px;
+  }
+  .kndzhg{
+
+    float: left;
+    width: 500px;
+  }
+  .gsznbm{
+
+  }
+  .ypgdj{
+    float: left;
+  }
+  .ypgfzrqm{float: left}
+
+  .ypgldshqm{
+    float: left;
+  }
+
+  .pgdj{float: left}
+  .pgfzrqm{
+    float: left;
+  }
+  .pgldshqm{
+    float: left;
+  }
+  .zlzrdw{
+    float: left;
+  }
+  .sfjhxm{
+    float: left;
+  }
+  .sfwcjhwba{
+    float: left;
+  }
+
+  .zlfa{
+
+    width:1183px;
+  }
+
+  .yhzljhzj{
+    width: 500px;
+    float: left;
+  }
+  .yssqdw{
+
+    float: left;
+  }
+  .fzr{
+    float: left;
+  }
+  .jl{float: left}
+  .yszz{float: left}
+
+
+  .r-form {
+
+  }
+
+  .r-form-item {
+
+
+  }
+  .r-form {
+
+  }
+  .r-form-label-right .r-form-item {
+    margin-top: -26px;
+
+  }
+  .sgyhnr{
+    width: 1183px;
+  }
+  .ljlsyhzlzj .r-form-item-label {
+    width: 120px!important;
+  }
+  .yszzdw{
+    width: 700px;
+
+  }
+
+  .yhhc{
+    opacity: 0;
+
+  }
+
+  .yhszdw .r-input {
+    margin-top: -14px;
+  }
+  .fxrq{
+    position: relative;
+    left: -292px;
+  }
+  .ypgfzrqm .r-input {
+    margin-top: -14px;
+  }
+
+  .ypgfzrqmrq .r-input {
+    margin-top: -14px;
+  }
+
+
+
+  .ypgldshqm .r-input {
+    margin-top: -14px;
+  }
+  .ypgldshqmrq .r-input {
+    margin-top: -14px;
+  }
+  .pgfzrqm .r-input {
+    margin-top: -14px;
+  }
+  .pgfzrqmrq .r-input {
+    margin-top: -14px;
+  }
+  .sfwcjhwba .r-input {
+    margin-top: -14px;
+  }
+
+  .yhzljhzj .r-input {
+    margin-top: -14px;
+  }
+  .ljlsyhzlzj .r-input {
+    margin-top: -14px;
+  }
+
+  .r-btn {
+    margin-left: 650px;
+    margin-top: 10px;
+  }
+  .r-form::-webkit-scrollbar-track
+  {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: transparent;
+  }
+  .r-form::-webkit-scrollbar
+  {
+    width: 0px;
+    background-color: transparent;
+  }
+
+  .kndzhg .r-input {
+    width: 400px;
+  }
+  .sgyhnr{
+    width: 1200px!important;
+  }
+  .ypgldshqm .r-input {
+    width: 212px;
+  }
+
+  .zlfa {
+    width: 1200px!important;
+  }
+  .ypgdj .r-select-selection {
+    width: 193px;
+  }
+
+  .pgdj .r-select-selection {
+    width: 193px;
+  }
+
+  .sfjhxm .r-select-selection {
+    width: 193px;
+  }
+
 </style>
