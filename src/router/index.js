@@ -21,6 +21,7 @@ import barLabelRotation from '../components/knowlegeGraph/barLabelRotation'
 import pieCustom from '../components/knowlegeGraph/pieCustom'
 import datasetEncode0 from '../components/knowlegeGraph/datasetEncode0'
 import barStack from '../components/knowlegeGraph/barStack'
+import XCSearch from '../components/extend/XCSearch'
 Vue.use(Router)
 
 export default new Router({
@@ -119,6 +120,11 @@ export default new Router({
         path: 'barStack',
         name: 'barStack',
         component: barStack
+      },
+      {
+        path: 'XCSearch',
+        name: 'XCSearch',
+        component: XCSearch
       }
       ]
     },

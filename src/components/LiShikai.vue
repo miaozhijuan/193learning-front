@@ -76,9 +76,6 @@
         <r-icon type="ios-cloud-upload"></r-icon><router-link to="/knowclient/fileupload">隐患信息批量导入</router-link>
       </r-menu-item>
     </r-sub-menu>
-<!--  <r-menu-item name="2">-->
-<!--    <r-icon type="ios-paper"></r-icon><router-link to="/knowclient/map">内容管理</router-link>-->
-<!--  </r-menu-item>-->
   <r-sub-menu name="3">
           <template slot="title"><span id="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="network"></r-icon>&nbsp;&nbsp;&nbsp;隐患管理智能推荐</span></template>
           <r-menu-item name="3-1" >
@@ -90,18 +87,6 @@
           <r-menu-item name="3-3" >
             <r-icon type="paintbrush"></r-icon><router-link to="/knowclient/regulations">规程规则智能推荐</router-link>
           </r-menu-item>
-<!--          <r-menu-item name="3-4" >-->
-<!--            <r-icon type="arrow-graph-up-right"></r-icon><router-link to="/knowclient/charts">专业统计</router-link>-->
-<!--          </r-menu-item>-->
-          <!-- <r-menu-item name="2-2" href="app.html">
-            <r-icon type="ios-browsers-outline"></r-icon>App 布局
-          </r-menu-item>
-          <r-menu-item name="2-3" href="button.html">
-            <r-icon type="social-youtube-outline"></r-icon>Button 按钮
-          </r-menu-item>
-          <r-menu-item name="2-4" href="icon.html">
-            <r-icon type="ios-heart-outline"></r-icon>Icon 图标
-          </r-menu-item> -->
         </r-sub-menu>
   <r-sub-menu name="2">
           <template slot="title"><span id="title4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="network"></r-icon>&nbsp;&nbsp;&nbsp;隐患知识图谱管理</span></template>
@@ -111,26 +96,11 @@
           <r-menu-item name="2-2" >
             <r-icon type="pull-request"></r-icon><router-link to="/knowclient/knowledgeGraphReason">隐患的原因分类图谱</router-link>
           </r-menu-item>
-<!--          <r-menu-item name="3-3" >-->
-<!--            <r-icon type="paintbrush"></r-icon><router-link to="/knowclient/regulations">规程规则智能推荐</router-link>-->
-<!--          </r-menu-item>-->
-<!--          <r-menu-item name="3-4" >-->
-<!--            <r-icon type="arrow-graph-up-right"></r-icon><router-link to="/knowclient/charts">专业统计</router-link>-->
-<!--          </r-menu-item>-->
-          <!-- <r-menu-item name="2-2" href="app.html">
-            <r-icon type="ios-browsers-outline"></r-icon>App 布局
-          </r-menu-item>
-          <r-menu-item name="2-3" href="button.html">
-            <r-icon type="social-youtube-outline"></r-icon>Button 按钮
-          </r-menu-item>
-          <r-menu-item name="2-4" href="icon.html">
-            <r-icon type="ios-heart-outline"></r-icon>Icon 图标
-          </r-menu-item> -->
         </r-sub-menu>
   <r-sub-menu name="6">
           <template slot="title"><span id="title5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="network"></r-icon>&nbsp;&nbsp;&nbsp;隐患风险统计分析</span></template>
           <r-menu-item name="6-1" >
-            <r-icon type="search"></r-icon><router-link to="/knowclient/lineStack">单位隐患的历史趋势</router-link>
+            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/lineStack">单位隐患的历史趋势</router-link>
           </r-menu-item>
           <r-menu-item name="6-2" >
             <r-icon type="pull-request"></r-icon><router-link to="/knowclient/pieCustom">隐患原因统计</router-link>
@@ -138,48 +108,19 @@
           <r-menu-item name="6-3" >
             <r-icon type="pull-request"></r-icon><router-link to="/knowclient/map">各专业隐患数量统计</router-link>
           </r-menu-item>
-<!--          <r-menu-item name="6-4" >-->
-<!--            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/tmpmeasure">隐患完成情况统计</router-link>-->
-<!--          </r-menu-item>-->
           <r-menu-item name="6-5" >
             <r-icon type="pull-request"></r-icon><router-link to="/knowclient/datasetEncode0">隐患来源统计</router-link>
           </r-menu-item>
           <r-menu-item name="6-6" >
             <r-icon type="pull-request"></r-icon><router-link to="/knowclient/barStack">各单位隐患数量统计</router-link>
           </r-menu-item>
-<!--          <r-menu-item name="3-3" >-->
-<!--            <r-icon type="paintbrush"></r-icon><router-link to="/knowclient/regulations">规程规则智能推荐</router-link>-->
-<!--          </r-menu-item>-->
-<!--          <r-menu-item name="3-4" >-->
-<!--            <r-icon type="arrow-graph-up-right"></r-icon><router-link to="/knowclient/charts">专业统计</router-link>-->
-<!--          </r-menu-item>-->
-          <!-- <r-menu-item name="2-2" href="app.html">
-            <r-icon type="ios-browsers-outline"></r-icon>App 布局
+          <r-menu-item name="6-7" >
+            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/XCSearch">历史数据统计</router-link>
           </r-menu-item>
-          <r-menu-item name="2-3" href="button.html">
-            <r-icon type="social-youtube-outline"></r-icon>Button 按钮
-          </r-menu-item>
-          <r-menu-item name="2-4" href="icon.html">
-            <r-icon type="ios-heart-outline"></r-icon>Icon 图标
-          </r-menu-item> -->
         </r-sub-menu>
       <r-menu-item name="7">
         <r-icon type="ios-paper"></r-icon><router-link to="/knowclient/">隐患内容检索</router-link>
       </r-menu-item>
-<!--  <r-sub-menu name="5">-->
-<!--    <template slot="title">-->
-<!--      <span id="title2"><r-icon type="stats-bars"></r-icon>&nbsp;&nbsp;&nbsp;开发人员</span>-->
-<!--    </template>-->
-<!--    <r-menu-group title="">-->
-<!--      &lt;!&ndash; <r-menu-item name="3-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/knowclient/sunshengze">孙圣泽</router-link></r-menu-item>-->
-<!--      <r-menu-item name="3-2"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/knowclient/yuanxingliang">袁星亮</router-link></r-menu-item> &ndash;&gt;-->
-<!--      <r-menu-item name="5-1"><r-icon type="ios-browsers-outline"></r-icon><router-link to="/knowclient/yuanxingliang">李仕凯</router-link></r-menu-item>-->
-<!--    </r-menu-group>-->
-<!--    &lt;!&ndash; <r-menu-group title="">-->
-<!--      <r-menu-item name="3-4"><r-icon type="ios-browsers-outline"></r-icon>用户留存</r-menu-item>-->
-<!--      <r-menu-item name="3-5"><r-icon type="ios-browsers-outline"></r-icon>流失用户</r-menu-item>-->
-<!--    </r-menu-group> &ndash;&gt;-->
-<!--  </r-sub-menu>-->
 
     <r-menu-item name="4">
       <r-icon type="ios-people"></r-icon><router-link to="/knowclient/user">用户管理</router-link>
