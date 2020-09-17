@@ -28,7 +28,7 @@ export default {
         // 动态数据
         this.data1 = resp.data
         console.log(this.data1.length)
-        // 问题遍历数据并赋值？？？？？？？？？？？？？未解决
+
         var jsondataName = []
         var jsondata = []
         for (var i = 0; i < this.data1.length; i++) {

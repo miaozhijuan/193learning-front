@@ -22,6 +22,9 @@ import pieCustom from '../components/knowlegeGraph/pieCustom'
 import datasetEncode0 from '../components/knowlegeGraph/datasetEncode0'
 import barStack from '../components/knowlegeGraph/barStack'
 import XCSearch from '../components/extend/XCSearch'
+import XCSearchChartmap from '../components/extend/chartmap_template'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -125,7 +128,12 @@ export default new Router({
         path: 'XCSearch',
         name: 'XCSearch',
         component: XCSearch
-      }
+      },
+      {
+        path: 'XCSearchChartmap',
+        name: 'XCSearchChartmap',
+        component: XCSearchChartmap
+      },
       ]
     },
     {
