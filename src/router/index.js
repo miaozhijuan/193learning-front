@@ -8,7 +8,7 @@ import Table from '../components/lishikai/Table.vue'
 import Login from '@/components/page/Login.vue'
 import User from '../components/lishikai/user.vue'
 import BaseCharts from '../components/lishikai/BaseCharts'
-import map from '../components/lishikai/chartmap'
+import chartmap from '../components/lishikai/chartmap'
 import tmpmeasure from '../components/lishikai/tmpmeasure'
 import regulations from '../components/lishikai/regulations'
 import accidentManager from '../components/lishikai/accidentManager'
@@ -23,6 +23,11 @@ import datasetEncode0 from '../components/knowlegeGraph/datasetEncode0'
 import barStack from '../components/knowlegeGraph/barStack'
 import XCSearch from '../components/extend/XCSearch'
 import XCSearchChartmap from '../components/extend/chartmap_template'
+import chartmap_unitStatistics from '../components/extend/chartmap_unitStatistics_'
+import history_trend from '../components/extend/chartmap_history_trend'
+import hidden_reason from '../components/extend/chartmap_reason_'
+import chartmap_from_ from '../components/extend/chartmap_from'
+import hiddenOfficeFrom from '../components/extend/chartmap_hiddenOfficeFrom'
 
 
 Vue.use(Router)
@@ -60,9 +65,9 @@ export default new Router({
         component: BaseCharts
       },
       {
-        path: 'map',
-        name: 'map',
-        component: map
+        path: 'chartmap',
+        name: 'chartmap',
+        component: chartmap
       },
       {
         path: 'tmpmeasure',
@@ -102,7 +107,7 @@ export default new Router({
       {
         path: 'lineStack',
         name: 'lineStack',
-        component: lineStack
+        component: history_trend
       },
       {
         path: 'barLabelRotation',
@@ -112,17 +117,17 @@ export default new Router({
       {
         path: 'pieCustom',
         name: 'pieCustom',
-        component: pieCustom
+        component: hidden_reason
       },
       {
         path: 'datasetEncode0',
         name: 'datasetEncode0',
-        component: datasetEncode0
+        component: chartmap_from_
       },
       {
         path: 'barStack',
         name: 'barStack',
-        component: barStack
+        component: hiddenOfficeFrom
       },
       {
         path: 'XCSearch',
@@ -134,6 +139,11 @@ export default new Router({
         name: 'XCSearchChartmap',
         component: XCSearchChartmap
       },
+      {
+        path: 'chartmap_unitStatistics',
+        name: 'chartmap_unitStatistics',
+        component: chartmap_unitStatistics
+      }
       ]
     },
     {

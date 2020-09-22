@@ -11,45 +11,50 @@
 var echarts = require('echarts')
 export default {
   name: 'chartmap',
+  // 1、数据域
   data () {
     return {
-      data1: []
+      data1: [],
+      jsondata:[]
     }
   },
   mounted () {
+    //2、数据获取
+
     this.initData()
   },
   methods: {
     initData: function () {
       this.requested = true
-      var url = this.global_request_url.requestMapData
-      this.$axios.post(url).then(resp => {
-        console.log('-----------进入echarts加载数据')
+      var url = this.global_request_url.hiddenReason
+      this.$axios.get(url).then(resp => {
         // 动态数据
-        this.data1 = resp.data
-        console.log(this.data1.length)
 
+          this.data1 = resp.data
+
+
+        // 3、作用域--数据处理之后放到这里，一般为数组结构放置
         var jsondataName = []
-        var jsondata = []
         for (var i = 0; i < this.data1.length; i++) {
-          jsondataName.push(this.data1[i].key)
-          jsondata.push({
-            name: this.data1[i].key,
-            value: this.data1[i].doc_count
-          })
+
+            jsondataName.push(this.data1[i].key);
+            this.jsondata.push({
+              name: this.data1[i].key,
+              value: this.data1[i].doc_count
+            })
+
+
         }
-        console.log('---------------jsondata----------------')
-        console.log(jsondata)
-        console.log('---------------jsondataName----------------')
-        console.log(jsondataName)
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main1'))
+
+
         // 绘制图表
-        myChart.setOption({
+        myChart.setOption(  {
           title: {
-            text: '隐患数据类型统计',
-            subtext: '白山',
-            x: 'center'
+            text: '隐患数量统计',
+            subtext: '隐患原因',
+            left: 'center'
           },
           tooltip: {
             trigger: 'item',
@@ -61,17 +66,19 @@ export default {
             right: 10,
             top: 20,
             bottom: 20,
-            data: jsondataName
+            data: jsondataName, //data.legendData
+
+            selected: this.jsondata //  data.selected
           },
           series: [
             {
-              name: '故障类型',
+              name: '隐患原因',
               type: 'pie',
               radius: '55%',
               center: ['40%', '50%'],
-              data: jsondata,
-              itemStyle: {
-                emphasis: {
+              data: this.jsondata,//data.seriesData this.jsondata
+              emphasis: {
+                itemStyle: {
                   shadowBlur: 10,
                   shadowOffsetX: 0,
                   shadowColor: 'rgba(0, 0, 0, 0.5)'
@@ -84,9 +91,13 @@ export default {
     }
   },
   created: function () {
-    // this.funB()
   }
 }
 </script>
 <style>
+
+
+  .r-menu-vertical .r-menu-item a {
+    width: 230px;
+  }
 </style>

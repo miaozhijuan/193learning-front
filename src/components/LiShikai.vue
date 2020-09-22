@@ -65,7 +65,7 @@
       </div>
   <div slot="aside" >
 <!--    value="3-1"-->
-  <r-menu  style="width:200px" mode="vertical" expand="true" v-model="activeMenu"   slot="aside" expend>
+  <r-menu  style="width:200px" mode="vertical" :expand=expand v-model="activeMenu"   slot="aside" expend>
   <r-menu-item><r-icon type="paper-airplane"></r-icon>操作菜单</r-menu-item>
     <r-sub-menu name="5">
       <template slot="title"><span id="title3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="settings"></r-icon>&nbsp;&nbsp;&nbsp;隐患知识库管理</span></template>
@@ -106,7 +106,7 @@
             <r-icon type="pull-request"></r-icon><router-link to="/knowclient/pieCustom">隐患原因统计</router-link>
           </r-menu-item>
           <r-menu-item name="6-3" >
-            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/map">各专业隐患数量统计</router-link>
+            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/chartmap">各专业隐患数量统计</router-link>
           </r-menu-item>
           <r-menu-item name="6-5" >
             <r-icon type="pull-request"></r-icon><router-link to="/knowclient/datasetEncode0">隐患来源统计</router-link>
@@ -114,13 +114,22 @@
           <r-menu-item name="6-6" >
             <r-icon type="pull-request"></r-icon><router-link to="/knowclient/barStack">各单位隐患数量统计</router-link>
           </r-menu-item>
-          <r-menu-item name="6-7" >
-            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/XCSearch">历史数据统计</router-link>
-          </r-menu-item>
+<!--          <r-menu-item name="6-7" >-->
+<!--            <r-icon type="pull-request"></r-icon><router-link to="/knowclient/XCSearch">历史数据统计</router-link>-->
+<!--          </r-menu-item>-->
         </r-sub-menu>
-      <r-menu-item name="7">
-        <r-icon type="ios-paper"></r-icon><router-link to="/knowclient/">隐患内容检索</router-link>
-      </r-menu-item>
+      <r-sub-menu  name="7">
+        <template slot="title"><span id="title5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<r-icon type="network"></r-icon>&nbsp;&nbsp;&nbsp;隐患内容统计分析</span></template>
+        <r-menu-item name="7-1" >
+        <r-icon type="ios-paper"></r-icon><router-link to="/knowclient/XCSearch">历史数据详情检索</router-link>
+        </r-menu-item>
+        <r-menu-item name="7-2" >
+        <r-icon type="ios-paper"></r-icon><router-link to="/knowclient/XCSearchChartmap">已治理情况统计</router-link>
+        </r-menu-item>
+        <r-menu-item name="7-3" >
+        <r-icon type="ios-paper"></r-icon><router-link to="/knowclient/chartmap_unitStatistics">未治理的隐患单位统计</router-link>
+        </r-menu-item>
+      </r-sub-menu >
 
     <r-menu-item name="4">
       <r-icon type="ios-people"></r-icon><router-link to="/knowclient/user">用户管理</router-link>
@@ -140,7 +149,7 @@ export default {
   name: 'LiShikai',
   data () {
     return {
-
+      expand:true,
       dialog: {
         editPaw: {
           show: false
